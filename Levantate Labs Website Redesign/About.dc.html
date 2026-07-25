@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="site-motion.js"></script>
+<script src="image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F5F0;font-family:'Archivo',sans-serif;color:#16150F;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#16150F;text-decoration:none}a:hover{color:#C74A26}
+::selection{background:#16150F;color:#F7F5F0}
+@media (max-width:820px){
+[data-rgrid="1"]{grid-template-columns:1fr !important;gap:28px !important}
+[data-rhide="1"]{display:none !important}
+h1{font-size:clamp(40px,11.5vw,64px) !important}
+}
+</style>
+</helmet>
+
+<!-- NAV -->
+<div style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,245,240,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(22,21,15,0.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:22px 40px;display:flex;align-items:center;justify-content:space-between">
+    <a href="Home v2.dc.html" style="display:flex;align-items:center;gap:11px" style-hover="color:#16150F">
+      <img src="assets/logo-dark.svg" style="width:22px;display:block" alt="Levantate Labs">
+      <span style="font-size:16px;font-weight:600;letter-spacing:-0.015em">Levantate Labs</span>
+    </a>
+    <div data-rhide="1" style="display:flex;gap:34px;font-size:14.5px;font-weight:450">
+      <a href="Services.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">Services</a>
+      <a href="Products.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">Products</a>
+      <a href="About.dc.html" style="color:#16150F;font-weight:550">About</a>
+      <a href="Insights.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">Insights</a>
+    </div>
+    <a href="Contact.dc.html" data-magnetic="1" style="display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;border:1px solid rgba(22,21,15,0.25);padding:10px 22px;border-radius:999px;transition:background 220ms ease,color 220ms ease,border-color 220ms ease" style-hover="background:#16150F;color:#F7F5F0;border-color:#16150F">Contact<span style="font-size:15px;line-height:1">→</span></a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div style="padding:200px 40px 100px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="1" style="font-size:13px;color:rgba(22,21,15,0.45);margin-bottom:28px">About</div>
+    <h1 style="font-size:clamp(48px,6.4vw,96px);font-weight:600;letter-spacing:-0.038em;line-height:1.04;margin:0;max-width:1100px">
+      <span style="display:block;overflow:hidden;padding-bottom:0.08em;margin-bottom:-0.08em"><span data-line="1" style="display:block">A studio run by engineers,</span></span>
+      <span style="display:block;overflow:hidden;padding-bottom:0.08em;margin-bottom:-0.08em"><span data-line="1" style="display:block">not account managers<span style="color:#C74A26">.</span></span></span>
+    </h1>
+  </div>
+</div>
+
+<!-- STUDIO IMAGE -->
+<div style="padding:0 40px 130px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="1" data-media-frame="1" style="overflow:hidden;border-radius:20px">
+      <div data-parallax="0.07" style="position:relative;width:100%;height:60vh;min-height:400px;will-change:transform">
+        <image-slot id="about-studio" shape="rect" placeholder="The studio — team at work"></image-slot>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY -->
+<div style="padding:0 40px 140px">
+  <div data-rgrid="1" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start">
+    <div data-reveal="1" style="font-size:13px;color:rgba(22,21,15,0.45);padding-top:10px">The story</div>
+    <div>
+      <p data-words="1" style="font-size:clamp(26px,3vw,40px);font-weight:500;letter-spacing:-0.025em;line-height:1.32;margin:0;max-width:900px">Levantate Labs started with a simple frustration: too much software is built to be sold, not to be run. We build the other kind — and we put our name on it, from the <span style="border-bottom:2px solid #C74A26">first architecture diagram to production</span>.</p>
+      <div data-rgrid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:72px">
+        <p data-reveal="1" style="font-size:16px;line-height:1.75;color:rgba(22,21,15,0.6);margin:0">We're a small team on purpose. Every project gets senior engineers — the people you talk to in the first call are the people writing the code. That's how an interview platform we built ended up quietly serving more than a hundred enterprise clients.</p>
+        <p data-reveal="1" style="font-size:16px;line-height:1.75;color:rgba(22,21,15,0.6);margin:0">And because we ship our own products — Maestro, a voice assistant, and one we're not talking about yet — we feel the consequences of engineering decisions the same way our clients do. It keeps us honest.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<div style="padding:0 40px 140px">
+  <div data-rgrid="1" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start">
+    <div data-reveal="1" style="font-size:13px;color:rgba(22,21,15,0.45);padding-top:12px">What we believe</div>
+    <div data-rgrid="1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+        <div data-reveal="1" style="{{ v.cardStyle }}">
+          <div style="font-size:13px;font-weight:500;color:rgba(22,21,15,0.45)">{{ v.num }}</div>
+          <div style="margin-top:auto">
+            <div style="font-size:24px;font-weight:600;letter-spacing:-0.02em">{{ v.title }}</div>
+            <p style="font-size:14.5px;line-height:1.65;color:rgba(22,21,15,0.6);margin:12px 0 0">{{ v.body }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div style="padding:0 40px 150px">
+  <div data-rgrid="1" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start">
+    <div data-reveal="1" style="font-size:13px;color:rgba(22,21,15,0.45);padding-top:12px">The team</div>
+    <div>
+      <h2 data-reveal="1" style="font-size:clamp(36px,4vw,56px);font-weight:600;letter-spacing:-0.03em;line-height:1.08;margin:0 0 56px">Small team.<br>Senior hands only.</h2>
+      <div data-rgrid="1" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px">
+        <sc-for list="{{ team }}" as="t" hint-placeholder-count="4">
+          <div data-reveal="1">
+            <div style="border-radius:16px;overflow:hidden;position:relative;height:320px;background:#EFEAE0">
+              <image-slot id="{{ t.imgId }}" shape="rect" placeholder="{{ t.imgHint }}"></image-slot>
+            </div>
+            <div style="font-size:16.5px;font-weight:600;margin-top:16px">{{ t.name }}</div>
+            <div style="font-size:13.5px;color:rgba(22,21,15,0.5);margin-top:3px">{{ t.role }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div data-section-scale="1" style="background:#16150F;color:#F7F5F0;padding:120px 40px 0;border-radius:28px;margin:0 16px 16px;overflow:hidden;will-change:transform">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:48px;flex-wrap:wrap">
+      <h2 data-reveal="1" style="font-size:clamp(40px,5.5vw,80px);font-weight:600;letter-spacing:-0.035em;line-height:1.04;margin:0">Tell us what<br>you're building<span style="color:#C74A26">.</span></h2>
+      <a data-reveal="1" href="Contact.dc.html" data-magnetic="1" style="display:inline-flex;align-items:center;gap:12px;background:#F7F5F0;color:#16150F;font-size:15.5px;font-weight:500;padding:18px 36px;border-radius:999px;transition:background 240ms ease,color 240ms ease" style-hover="background:#C74A26;color:#F7F5F0">Get in touch <span data-btn-arrow="1" style="display:inline-block;font-size:16px;line-height:1;transition:transform 240ms ease">→</span></a>
+    </div>
+    <div data-rgrid="1" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-top:110px;padding-top:40px;border-top:1px solid rgba(247,245,240,0.14)">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px"><img src="assets/logo-light.svg" style="width:22px" alt=""><span style="font-size:15.5px;font-weight:600;letter-spacing:-0.015em">Levantate Labs</span></div>
+        <p style="font-size:13.5px;line-height:1.65;color:rgba(247,245,240,0.45);max-width:280px;margin:18px 0 0">Engineering studio. Web platforms, AI systems, blockchain — built end to end.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:14px">
+        <a href="Services.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Services</a>
+        <a href="Products.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Products</a>
+        <a href="About.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">About</a>
+        <a href="Insights.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Insights</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:14px">
+        <a href="Contact.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Contact</a>
+        <a href="#" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">LinkedIn</a>
+        <a href="#" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">X / Twitter</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:24px;margin-top:56px;font-size:12.5px;color:rgba(247,245,240,0.35);position:relative;z-index:2">
+      <span>© 2026 Levantate Labs</span>
+      <span>Built properly.</span>
+    </div>
+  </div>
+  <div style="overflow:hidden;margin-top:-52px;line-height:0;border-radius:0 0 28px 28px">
+    <div data-wordmark="1" style="font-size:clamp(120px,17.5vw,320px);font-weight:700;letter-spacing:-0.045em;line-height:0.76;text-align:center;background:linear-gradient(180deg,rgba(247,245,240,0.16) 0%,rgba(247,245,240,0.05) 62%,rgba(247,245,240,0) 96%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;pointer-events:none;transform:translateY(6%)">Levantate</div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    this._w = setInterval(() => {
+      if (window.gsap && window.ScrollTrigger && window.LVTMotion) { clearInterval(this._w); window.LVTMotion.init(); }
+    }, 60);
+  }
+  componentWillUnmount() {
+    if (this._w) clearInterval(this._w);
+    if (window.ScrollTrigger) window.ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+  renderVals() {
+    const cardBg = ["#EFEAE0", "#E9E0D2", "#E3E6DC"];
+    return {
+      values: [
+        { num: "01", title: "Own the outcome", body: "We don't ship and disappear. If it breaks at 2am, it's our problem too — so we build like it will be." },
+        { num: "02", title: "Boring where it counts", body: "Novel technology where it earns its place, proven technology everywhere else. Excitement belongs in the product, not the outage channel." },
+        { num: "03", title: "Say the hard thing early", body: "If a scope, deadline or architecture is wrong, you'll hear it from us in week one — not month six." }
+      ].map((v, i) => ({ ...v, cardStyle: { background: cardBg[i], borderRadius: "20px", padding: "36px", minHeight: "280px", display: "flex", flexDirection: "column", gap: "24px" } })),
+      team: [
+        { name: "Founder name", role: "Founder & engineering", imgId: "team-1", imgHint: "Portrait" },
+        { name: "Name", role: "Product & design", imgId: "team-2", imgHint: "Portrait" },
+        { name: "Name", role: "AI & ML", imgId: "team-3", imgHint: "Portrait" },
+        { name: "Name", role: "Platform & infrastructure", imgId: "team-4", imgHint: "Portrait" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

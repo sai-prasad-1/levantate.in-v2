@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="site-motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F5F0;font-family:'Archivo',sans-serif;color:#16150F;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#16150F;text-decoration:none}a:hover{color:#C74A26}
+::selection{background:#16150F;color:#F7F5F0}
+input,textarea,select{font-family:'Archivo',sans-serif}
+input:focus,textarea:focus,select:focus{outline:none;border-color:#C74A26 !important}
+@media (max-width:820px){
+[data-rgrid="1"]{grid-template-columns:1fr !important;gap:28px !important}
+[data-rhide="1"]{display:none !important}
+h1{font-size:clamp(40px,11.5vw,64px) !important}
+}
+</style>
+</helmet>
+
+<!-- NAV -->
+<div style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,245,240,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(22,21,15,0.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:22px 40px;display:flex;align-items:center;justify-content:space-between">
+    <a href="Home v2.dc.html" style="display:flex;align-items:center;gap:11px" style-hover="color:#16150F">
+      <img src="assets/logo-dark.svg" style="width:22px;display:block" alt="Levantate Labs">
+      <span style="font-size:16px;font-weight:600;letter-spacing:-0.015em">Levantate Labs</span>
+    </a>
+    <div data-rhide="1" style="display:flex;gap:34px;font-size:14.5px;font-weight:450">
+      <a href="Services.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">Services</a>
+      <a href="Products.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">Products</a>
+      <a href="About.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">About</a>
+      <a href="Insights.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">Insights</a>
+    </div>
+    <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;background:#16150F;color:#F7F5F0;border:1px solid #16150F;padding:10px 22px;border-radius:999px" style-hover="background:#C74A26;border-color:#C74A26;color:#F7F5F0">Contact<span style="font-size:15px;line-height:1">→</span></a>
+  </div>
+</div>
+
+<!-- HERO + FORM -->
+<div style="padding:200px 40px 150px">
+  <div data-rgrid="1" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:96px;align-items:start">
+    <div>
+      <div data-reveal="1" style="display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:rgba(22,21,15,0.55);margin-bottom:32px"><span style="width:7px;height:7px;border-radius:50%;background:#C74A26;display:inline-block"></span>Two project slots open this quarter</div>
+      <h1 style="font-size:clamp(44px,5.6vw,84px);font-weight:600;letter-spacing:-0.038em;line-height:1.04;margin:0">
+        <span style="display:block;overflow:hidden;padding-bottom:0.08em;margin-bottom:-0.08em"><span data-line="1" style="display:block">Tell us what</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:0.08em;margin-bottom:-0.08em"><span data-line="1" style="display:block">you're building<span style="color:#C74A26">.</span></span></span>
+      </h1>
+      <p data-reveal="1" style="max-width:400px;font-size:17px;line-height:1.65;color:rgba(22,21,15,0.6);margin:40px 0 0">A few sentences is enough. We read everything ourselves and reply within two working days.</p>
+      <div data-reveal="1" style="margin-top:56px;display:flex;flex-direction:column;gap:20px">
+        <div>
+          <div style="font-size:12.5px;color:rgba(22,21,15,0.45);margin-bottom:6px">Email</div>
+          <a href="mailto:hello@levantatelabs.com" style="font-size:17px;font-weight:500;border-bottom:1px solid rgba(22,21,15,0.3);padding-bottom:2px" style-hover="border-color:#C74A26">hello@levantatelabs.com</a>
+        </div>
+        <div>
+          <div style="font-size:12.5px;color:rgba(22,21,15,0.45);margin-bottom:6px">Elsewhere</div>
+          <div style="display:flex;gap:20px;font-size:15px;font-weight:500">
+            <a href="#" style="border-bottom:1px solid rgba(22,21,15,0.3);padding-bottom:2px" style-hover="border-color:#C74A26">LinkedIn</a>
+            <a href="#" style="border-bottom:1px solid rgba(22,21,15,0.3);padding-bottom:2px" style-hover="border-color:#C74A26">X / Twitter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal="1" style="background:#FFFFFF;border:1px solid rgba(22,21,15,0.1);border-radius:24px;padding:48px">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px;min-height:400px;justify-content:center;text-align:center">
+          <div style="font-size:32px;font-weight:600;letter-spacing:-0.025em">Thank you<span style="color:#C74A26">.</span></div>
+          <p style="font-size:15.5px;line-height:1.65;color:rgba(22,21,15,0.6);margin:0">We've got your note and will reply within two working days.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:28px">
+          <div data-rgrid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label for="c-name" style="font-size:12.5px;color:rgba(22,21,15,0.5)">Name</label>
+              <input id="c-name" type="text" placeholder="Your name" style="border:none;border-bottom:1px solid rgba(22,21,15,0.2);background:transparent;padding:10px 2px;font-size:15.5px;color:#16150F">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label for="c-email" style="font-size:12.5px;color:rgba(22,21,15,0.5)">Email</label>
+              <input id="c-email" type="email" placeholder="you@company.com" style="border:none;border-bottom:1px solid rgba(22,21,15,0.2);background:transparent;padding:10px 2px;font-size:15.5px;color:#16150F">
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label for="c-company" style="font-size:12.5px;color:rgba(22,21,15,0.5)">Company</label>
+            <input id="c-company" type="text" placeholder="Company or project name" style="border:none;border-bottom:1px solid rgba(22,21,15,0.2);background:transparent;padding:10px 2px;font-size:15.5px;color:#16150F">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="font-size:12.5px;color:rgba(22,21,15,0.5)">What do you need?</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <sc-for list="{{ needs }}" as="n" hint-placeholder-count="5">
+                <button onClick="{{ n.toggle }}" style="{{ n.chipStyle }}">{{ n.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label for="c-msg" style="font-size:12.5px;color:rgba(22,21,15,0.5)">The project</label>
+            <textarea id="c-msg" rows="4" placeholder="A few sentences about what you're building, where it stands, and when you'd like to start." style="border:none;border-bottom:1px solid rgba(22,21,15,0.2);background:transparent;padding:10px 2px;font-size:15.5px;color:#16150F;resize:vertical;line-height:1.6"></textarea>
+          </div>
+          <button onClick="{{ submit }}" data-magnetic="1" style="display:inline-flex;align-items:center;justify-content:center;gap:12px;background:#16150F;color:#F7F5F0;font-size:15.5px;font-weight:500;padding:17px 34px;border-radius:999px;border:none;cursor:pointer;transition:background 240ms ease;align-self:flex-start" style-hover="background:#C74A26">Send the note <span data-btn-arrow="1" style="display:inline-block;font-size:16px;line-height:1;transition:transform 240ms ease">→</span></button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div data-section-scale="1" style="background:#16150F;color:#F7F5F0;padding:100px 40px 0;border-radius:28px;margin:0 16px 16px;overflow:hidden;will-change:transform">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-rgrid="1" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-top:8px">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px"><img src="assets/logo-light.svg" style="width:22px" alt=""><span style="font-size:15.5px;font-weight:600;letter-spacing:-0.015em">Levantate Labs</span></div>
+        <p style="font-size:13.5px;line-height:1.65;color:rgba(247,245,240,0.45);max-width:280px;margin:18px 0 0">Engineering studio. Web platforms, AI systems, blockchain — built end to end.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:14px">
+        <a href="Services.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Services</a>
+        <a href="Products.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Products</a>
+        <a href="About.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">About</a>
+        <a href="Insights.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Insights</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:14px">
+        <a href="Contact.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Contact</a>
+        <a href="#" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">LinkedIn</a>
+        <a href="#" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">X / Twitter</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:24px;margin-top:56px;font-size:12.5px;color:rgba(247,245,240,0.35);position:relative;z-index:2">
+      <span>© 2026 Levantate Labs</span>
+      <span>Built properly.</span>
+    </div>
+  </div>
+  <div style="overflow:hidden;margin-top:-52px;line-height:0;border-radius:0 0 28px 28px">
+    <div data-wordmark="1" style="font-size:clamp(120px,17.5vw,320px);font-weight:700;letter-spacing:-0.045em;line-height:0.76;text-align:center;background:linear-gradient(180deg,rgba(247,245,240,0.16) 0%,rgba(247,245,240,0.05) 62%,rgba(247,245,240,0) 96%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;pointer-events:none;transform:translateY(6%)">Levantate</div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false, selected: {} };
+
+  componentDidMount() {
+    this._w = setInterval(() => {
+      if (window.gsap && window.ScrollTrigger && window.LVTMotion) { clearInterval(this._w); window.LVTMotion.init(); }
+    }, 60);
+  }
+  componentWillUnmount() {
+    if (this._w) clearInterval(this._w);
+    if (window.ScrollTrigger) window.ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+
+  renderVals() {
+    const labels = ["Web platform", "AI / ML", "Enterprise software", "Blockchain", "Not sure yet"];
+    const sel = this.state.selected;
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submit: () => this.setState({ sent: true }),
+      needs: labels.map(label => ({
+        label,
+        toggle: () => this.setState(s => ({ selected: { ...s.selected, [label]: !s.selected[label] } })),
+        chipStyle: {
+          fontSize: "13.5px", fontWeight: "500", padding: "9px 18px", borderRadius: "999px", cursor: "pointer", whiteSpace: "nowrap",
+          border: sel[label] ? "1px solid #16150F" : "1px solid rgba(22,21,15,0.2)",
+          background: sel[label] ? "#16150F" : "transparent",
+          color: sel[label] ? "#F7F5F0" : "rgba(22,21,15,0.7)",
+          transition: "all 200ms ease", fontFamily: "'Archivo',sans-serif"
+        }
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

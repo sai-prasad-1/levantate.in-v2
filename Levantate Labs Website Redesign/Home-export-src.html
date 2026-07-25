@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="image-slot.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#F7F5F0">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="800" fill="#F7F5F0"/>
+<text x="80" y="380" font-family="Arial,Helvetica,sans-serif" font-size="120" font-weight="600" fill="#16150F" letter-spacing="-5">Levantate</text>
+<text x="80" y="510" font-family="Arial,Helvetica,sans-serif" font-size="120" font-weight="600" fill="#16150F" letter-spacing="-5">Labs<tspan fill="#C74A26">.</tspan></text>
+<rect x="80" y="590" width="640" height="6" fill="#C74A26"/>
+</svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F5F0;font-family:'Archivo',sans-serif;color:#16150F;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#16150F;text-decoration:none}a:hover{color:#C74A26}
+::selection{background:#16150F;color:#F7F5F0}
+@media (max-width:820px){
+[data-rgrid="1"]{grid-template-columns:1fr !important;gap:28px !important}
+[data-rhide="1"]{display:none !important}
+h1{font-size:clamp(40px,11.5vw,64px) !important}
+}
+</style>
+</helmet>
+
+<!-- ============ NAV ============ -->
+<div style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,245,240,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(22,21,15,0.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:22px 40px;display:flex;align-items:center;justify-content:space-between">
+    <a href="Home v2.dc.html" style="display:flex;align-items:center;gap:11px" style-hover="color:#16150F">
+      <img src="assets/logo-dark.svg" style="width:22px;display:block" alt="Levantate Labs">
+      <span style="font-size:16px;font-weight:600;letter-spacing:-0.015em">Levantate Labs</span>
+    </a>
+    <div data-rhide="1" style="display:flex;gap:34px;font-size:14.5px;font-weight:450">
+      <a href="Services.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">Services</a>
+      <a href="Products.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">Products</a>
+      <a href="About.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">About</a>
+      <a href="Insights.dc.html" style="color:rgba(22,21,15,0.65)" style-hover="color:#16150F">Insights</a>
+    </div>
+    <a href="Contact.dc.html" data-magnetic="1" style="display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;border:1px solid rgba(22,21,15,0.25);padding:10px 22px;border-radius:999px;transition:background 220ms ease,color 220ms ease,border-color 220ms ease" style-hover="background:#16150F;color:#F7F5F0;border-color:#16150F">Contact<span style="font-size:15px;line-height:1">→</span></a>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<div style="padding:180px 40px 0;position:relative">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-hero-item="1" style="display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:rgba(22,21,15,0.55);margin-bottom:36px"><span style="width:7px;height:7px;border-radius:50%;background:#C74A26;display:inline-block"></span>Two project slots open this quarter</div>
+    <h1 style="font-size:clamp(52px,7.2vw,116px);font-weight:600;letter-spacing:-0.038em;line-height:1.02;margin:0;max-width:1160px">
+      <span style="display:block;overflow:hidden;padding-bottom:0.08em;margin-bottom:-0.08em"><span data-chars="1" style="display:block">Software your company</span></span>
+      <span style="display:block;overflow:hidden;padding-bottom:0.08em;margin-bottom:-0.08em"><span data-chars="1" style="display:block">can <span style="font-style:italic;font-weight:500">stand</span> on<span style="color:#C74A26">.</span></span></span>
+    </h1>
+    <div data-rgrid="1" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;margin-top:52px">
+      <div>
+        <p data-hero-item="1" style="max-width:480px;font-size:18px;line-height:1.6;color:rgba(22,21,15,0.6);margin:0;font-weight:400">We design and build web platforms, AI systems and enterprise software — end to end, as one accountable team.</p>
+        <div data-hero-item="1" style="display:flex;gap:10px;margin-top:28px;flex-wrap:wrap">
+          <span data-chip="1" style="font-size:13px;font-weight:500;padding:8px 16px;border:1px solid rgba(22,21,15,0.18);border-radius:999px;color:rgba(22,21,15,0.7)">Web platforms</span>
+          <span data-chip="1" style="font-size:13px;font-weight:500;padding:8px 16px;border:1px solid rgba(22,21,15,0.18);border-radius:999px;color:rgba(22,21,15,0.7)">AI systems</span>
+          <span data-chip="1" style="font-size:13px;font-weight:500;padding:8px 16px;border:1px solid rgba(22,21,15,0.18);border-radius:999px;color:rgba(22,21,15,0.7)">Blockchain</span>
+          <span data-chip="1" style="font-size:13px;font-weight:500;padding:8px 16px;border:1px solid rgba(22,21,15,0.18);border-radius:999px;color:rgba(22,21,15,0.7)">Enterprise</span>
+        </div>
+      </div>
+      <div data-hero-item="1" style="display:flex;align-items:center;gap:24px">
+        <a href="Contact.dc.html" data-magnetic="1" style="display:inline-flex;align-items:center;gap:12px;background:#16150F;color:#F7F5F0;font-size:15px;font-weight:500;padding:16px 30px;border-radius:999px;transition:background 240ms ease" style-hover="background:#C74A26;color:#F7F5F0">Start a project <span data-btn-arrow="1" style="display:inline-block;font-size:16px;line-height:1;transition:transform 240ms ease">→</span></a>
+        <a href="Services.dc.html" style="font-size:15px;font-weight:500;border-bottom:1px solid rgba(22,21,15,0.3);padding-bottom:3px;white-space:nowrap" style-hover="border-color:#C74A26">What we do</a>
+      </div>
+    </div>
+    <div style="margin-top:80px;overflow:hidden;border-radius:20px;position:relative" data-hero-media="1">
+      <div data-parallax="0.08" style="position:relative;width:100%;height:62vh;min-height:420px;will-change:transform">
+        <image-slot id="hero-media" shape="rect" placeholder="Hero image — the studio, or a product on screen"></image-slot>
+      </div>
+      <div style="position:absolute;left:24px;bottom:64px;font-size:12.5px;color:rgba(247,245,240,0.9);background:rgba(22,21,15,0.55);backdrop-filter:blur(8px);padding:9px 16px;border-radius:999px;pointer-events:none">The studio — fig. 01</div>
+    </div>
+    <div data-hero-item="1" style="display:flex;justify-content:space-between;align-items:center;gap:32px;padding:22px 4px 0;font-size:13.5px;color:rgba(22,21,15,0.5);flex-wrap:wrap">
+      <span>Working with startups and the enterprise</span>
+      <span style="display:inline-flex;align-items:center;gap:10px">Scroll <span data-scroll-cue="1" style="display:inline-block;width:36px;height:1px;background:rgba(22,21,15,0.4);transform-origin:left"></span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MARQUEE ============ -->
+<div style="margin-top:130px;border-top:1px solid rgba(22,21,15,0.1);border-bottom:1px solid rgba(22,21,15,0.1);padding:30px 0;overflow:hidden">
+  <div data-marquee="1" style="display:flex;gap:72px;white-space:nowrap;width:max-content;will-change:transform">
+    <sc-for list="{{ marqueeItems }}" as="m" hint-placeholder-count="12">
+      <span style="font-size:40px;font-weight:550;letter-spacing:-0.025em;display:inline-flex;align-items:center;gap:72px;color:rgba(22,21,15,0.85)">{{ m }} <span style="width:7px;height:7px;border-radius:50%;background:#C74A26;display:inline-block"></span></span>
+    </sc-for>
+  </div>
+</div>
+
+<!-- ============ INTRO STATEMENT ============ -->
+<div style="padding:160px 40px 150px">
+  <div data-rgrid="1" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start">
+    <div data-reveal="1" style="font-size:13px;color:rgba(22,21,15,0.45);padding-top:10px">About the studio</div>
+    <div>
+      <p data-words="1" style="font-size:clamp(26px,3vw,40px);font-weight:500;letter-spacing:-0.025em;line-height:1.32;margin:0;max-width:900px">Most software is built to demo well. Ours is built to run for years — we've shipped platforms that quietly serve <span style="border-bottom:2px solid #C74A26">over a hundred enterprise clients</span>, and we hold our own products to the same standard.</p>
+      <div data-reveal="1" style="display:flex;gap:64px;margin-top:64px;flex-wrap:wrap">
+        <div><div style="font-size:40px;font-weight:600;letter-spacing:-0.03em"><span data-count="100">100</span>+</div><div style="font-size:13.5px;color:rgba(22,21,15,0.5);margin-top:6px">enterprises served via client platforms</div></div>
+        <div><div style="font-size:40px;font-weight:600;letter-spacing:-0.03em"><span data-count="12">12</span>+</div><div style="font-size:13.5px;color:rgba(22,21,15,0.5);margin-top:6px">systems shipped end to end</div></div>
+        <div><div style="font-size:40px;font-weight:600;letter-spacing:-0.03em"><span data-count="3">3</span></div><div style="font-size:13.5px;color:rgba(22,21,15,0.5);margin-top:6px">products of our own — one live, two in the lab</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<div style="padding:0 40px 150px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-rgrid="1" style="display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start">
+      <div data-reveal="1" style="font-size:13px;color:rgba(22,21,15,0.45);padding-top:14px">Services</div>
+      <div>
+        <h2 data-reveal="1" style="font-size:clamp(36px,4vw,56px);font-weight:600;letter-spacing:-0.03em;line-height:1.08;margin:0 0 56px">Everything between the idea<br>and the system running in production.</h2>
+        <div style="border-top:1px solid rgba(22,21,15,0.12)">
+          <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+            <a href="Services.dc.html" data-reveal="1" data-rgrid="1" style="display:grid;grid-template-columns:1fr 1.1fr auto;gap:40px;align-items:baseline;padding:32px 4px;border-bottom:1px solid rgba(22,21,15,0.12);color:#16150F;transition:padding 240ms ease,background 240ms ease" style-hover="padding-left:20px;color:#16150F;background:rgba(199,74,38,0.04)">
+              <div style="font-size:clamp(22px,2.3vw,30px);font-weight:550;letter-spacing:-0.022em">{{ s.title }}</div>
+              <div style="font-size:15px;line-height:1.6;color:rgba(22,21,15,0.55)">{{ s.sub }}</div>
+              <div style="font-size:19px;color:#C74A26">→</div>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FEATURED WORK (DARK MOMENT) ============ -->
+<div data-section-scale="1" style="background:#16150F;color:#F7F5F0;padding:150px 40px;border-radius:28px;margin:0 16px;will-change:transform">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-rgrid="1" style="display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;margin-bottom:72px">
+      <div data-reveal="1" style="font-size:13px;color:rgba(247,245,240,0.45);padding-top:12px">Selected work</div>
+      <h2 data-reveal="1" style="font-size:clamp(36px,4vw,56px);font-weight:600;letter-spacing:-0.03em;line-height:1.08;margin:0">Work that carries<br>real weight in production.</h2>
+    </div>
+    <div data-rgrid="1" style="display:grid;grid-template-columns:1.5fr 1fr;gap:20px">
+      <div data-reveal="1" style="overflow:hidden;border-radius:18px" data-media-frame="1">
+        <div data-parallax="0.06" style="position:relative;width:100%;height:64vh;min-height:420px;will-change:transform">
+          <image-slot id="case-interview" shape="rect" placeholder="Interview platform — full product view"></image-slot>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-rows:1fr 1fr;gap:20px">
+        <div data-reveal="1" style="overflow:hidden;border-radius:18px;position:relative">
+          <image-slot id="case-detail-1" shape="rect" placeholder="Detail — assessment engine"></image-slot>
+        </div>
+        <div data-reveal="1" style="overflow:hidden;border-radius:18px;position:relative">
+          <image-slot id="case-detail-2" shape="rect" placeholder="Detail — admin & pipelines"></image-slot>
+        </div>
+      </div>
+    </div>
+    <div data-rgrid="1" style="display:grid;grid-template-columns:220px 1fr 1fr;gap:48px;margin-top:64px">
+      <div data-reveal="1" style="font-size:13px;color:rgba(247,245,240,0.45)">Case — hiring platform</div>
+      <p data-reveal="1" style="font-size:16px;line-height:1.7;color:rgba(247,245,240,0.65);margin:0">We took an interview product from the first architecture diagram to a production system — assessment engine, scheduling, evaluation pipelines, admin tooling. It now runs hiring for a client base of more than a hundred enterprises.</p>
+      <div data-reveal="1">
+        <div style="font-size:15px;line-height:1.7;color:rgba(247,245,240,0.65)">Full build — product, engineering, infrastructure, launch. The client's team focuses on their customers; the system takes care of itself.</div>
+        <a href="Contact.dc.html" style="display:inline-block;margin-top:28px;font-size:15px;font-weight:500;color:#F7F5F0;border-bottom:1px solid rgba(247,245,240,0.4);padding-bottom:3px" style-hover="color:#F7F5F0;border-color:#C74A26">Discuss a similar build</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APPROACH (PINNED STEPS) ============ -->
+<div style="padding:170px 40px 150px">
+  <div data-rgrid="1" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start">
+    <div data-reveal="1" style="font-size:13px;color:rgba(22,21,15,0.45);padding-top:12px">How we work</div>
+    <div>
+      <h2 data-reveal="1" style="font-size:clamp(36px,4vw,56px);font-weight:600;letter-spacing:-0.03em;line-height:1.08;margin:0 0 64px">Four phases. One team,<br>the whole way through.</h2>
+      <div data-rgrid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <sc-for list="{{ phases }}" as="p" hint-placeholder-count="4">
+          <div data-reveal="1" style="{{ p.cardStyle }}">
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <div style="font-size:13px;font-weight:500;color:rgba(22,21,15,0.45)">{{ p.num }}</div>
+              <div style="font-size:12.5px;color:rgba(22,21,15,0.4)">{{ p.span }}</div>
+            </div>
+            <div style="margin-top:auto">
+              <div style="font-size:26px;font-weight:600;letter-spacing:-0.02em">{{ p.title }}</div>
+              <p style="font-size:14.5px;line-height:1.65;color:rgba(22,21,15,0.6);margin:12px 0 0">{{ p.body }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PRODUCTS ============ -->
+<div style="padding:0 40px 150px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-rgrid="1" style="display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;margin-bottom:64px">
+      <div data-reveal="1" style="font-size:13px;color:rgba(22,21,15,0.45);padding-top:12px">Products</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap">
+        <h2 data-reveal="1" style="font-size:clamp(36px,4vw,56px);font-weight:600;letter-spacing:-0.03em;line-height:1.08;margin:0">We ship for ourselves, too.</h2>
+        <p data-reveal="1" style="max-width:340px;font-size:15px;line-height:1.6;color:rgba(22,21,15,0.55);margin:0">The same discipline we sell, applied to our own bets.</p>
+      </div>
+    </div>
+    <div data-rgrid="1" style="display:grid;grid-template-columns:220px 1fr;gap:48px">
+      <div></div>
+      <div data-rgrid="1" style="display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:18px">
+        <div data-reveal="1" style="background:#16150F;color:#F7F5F0;border-radius:20px;padding:40px;display:flex;flex-direction:column;min-height:440px;transition:transform 280ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:translateY(-6px)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12.5px;font-weight:500;color:#F7F5F0;background:#C74A26;padding:5px 12px;border-radius:999px">Live</span>
+          </div>
+          <div style="margin:30px 0;flex:1;min-height:130px;position:relative;border-radius:12px;overflow:hidden">
+            <image-slot id="prod-maestro" shape="rect" placeholder="Maestro — product shot"></image-slot>
+          </div>
+          <div style="font-size:30px;font-weight:600;letter-spacing:-0.025em">Maestro</div>
+          <p style="font-size:14.5px;line-height:1.65;color:rgba(247,245,240,0.6);margin:12px 0 0">A learning platform that doesn't teach you to code — it teaches you to think like an engineer and build systems that scale.</p>
+          <a href="Products.dc.html" style="display:inline-block;margin-top:22px;font-size:14px;font-weight:500;color:#F7F5F0;border-bottom:1px solid rgba(247,245,240,0.4);padding-bottom:2px;align-self:flex-start" style-hover="color:#F7F5F0;border-color:#C74A26">About Maestro</a>
+        </div>
+        <div data-reveal="1" style="background:#E9E0D2;border-radius:20px;padding:40px;display:flex;flex-direction:column;min-height:440px;transition:transform 280ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:translateY(-6px)">
+          <span style="font-size:12.5px;font-weight:500;color:#16150F;border:1px solid rgba(22,21,15,0.25);padding:5px 12px;border-radius:999px;align-self:flex-start">In development</span>
+          <div style="margin:30px 0;flex:1;min-height:110px;position:relative;border-radius:12px;overflow:hidden">
+            <image-slot id="prod-voice" shape="rect" placeholder="Voice assistant — visual"></image-slot>
+          </div>
+          <div style="font-size:26px;font-weight:600;letter-spacing:-0.022em">Voice assistant</div>
+          <p style="font-size:14.5px;line-height:1.65;color:rgba(22,21,15,0.6);margin:12px 0 0">An AI that handles calls, qualifies leads and works alongside sales teams in real time.</p>
+        </div>
+        <div data-reveal="1" style="background:#DCE0D6;border-radius:20px;padding:40px;display:flex;flex-direction:column;min-height:440px;transition:transform 280ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:translateY(-6px)">
+          <span style="font-size:12.5px;font-weight:500;color:#16150F;border:1px solid rgba(22,21,15,0.25);padding:5px 12px;border-radius:999px;align-self:flex-start">Stealth</span>
+          <div style="margin-top:auto">
+            <div style="font-size:26px;font-weight:600;letter-spacing:-0.022em;color:rgba(22,21,15,0.45)">Project three</div>
+            <p style="font-size:14.5px;line-height:1.65;color:rgba(22,21,15,0.6);margin:12px 0 0">Too early to talk about. Ask us over coffee.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TESTIMONIAL ============ -->
+<div style="padding:0 40px 160px">
+  <div data-rgrid="1" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:220px 1fr;gap:48px">
+    <div data-reveal="1" style="font-size:13px;color:rgba(22,21,15,0.45);padding-top:8px">From a client</div>
+    <div style="max-width:880px">
+      <div data-words="1" style="font-size:clamp(24px,2.8vw,36px);font-weight:500;letter-spacing:-0.022em;line-height:1.4">“They didn't just ship our platform — they engineered a system that now serves over a hundred enterprise clients without us having to think about it.”</div>
+      <div data-reveal="1" style="display:flex;align-items:center;gap:14px;margin-top:36px">
+        <div style="width:44px;height:44px;border-radius:50%;overflow:hidden;position:relative"><image-slot id="testimonial-avatar" shape="circle" placeholder=""></image-slot></div>
+        <div><div style="font-size:15px;font-weight:550">Client name</div><div style="font-size:13px;color:rgba(22,21,15,0.5);margin-top:2px">CTO, hiring platform</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ INSIGHTS / BLOG ============ -->
+<div style="padding:0 40px 170px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-rgrid="1" style="display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;margin-bottom:56px">
+      <div data-reveal="1" style="font-size:13px;color:rgba(22,21,15,0.45);padding-top:12px">Insights</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap">
+        <h2 data-reveal="1" style="font-size:clamp(36px,4vw,56px);font-weight:600;letter-spacing:-0.03em;line-height:1.08;margin:0">Notes from the studio.</h2>
+        <a data-reveal="1" href="Insights.dc.html" style="font-size:15px;font-weight:500;border-bottom:1px solid rgba(22,21,15,0.3);padding-bottom:3px;white-space:nowrap" style-hover="border-color:#C74A26">All writing</a>
+      </div>
+    </div>
+    <div data-rgrid="1" style="display:grid;grid-template-columns:220px 1fr;gap:48px">
+      <div></div>
+      <div data-rgrid="1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+        <sc-for list="{{ posts }}" as="post" hint-placeholder-count="3">
+          <a href="Insights.dc.html" data-reveal="1" style="display:flex;flex-direction:column;gap:18px;color:#16150F" style-hover="color:#16150F">
+            <div data-media-frame="1" style="border-radius:14px;overflow:hidden;position:relative;height:240px">
+              <image-slot id="{{ post.imgId }}" shape="rect" placeholder="{{ post.imgHint }}"></image-slot>
+            </div>
+            <div style="display:flex;gap:12px;font-size:12.5px;color:rgba(22,21,15,0.5)"><span>{{ post.tag }}</span><span>·</span><span>{{ post.date }}</span></div>
+            <div style="font-size:20px;font-weight:550;letter-spacing:-0.015em;line-height:1.3">{{ post.title }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CTA (DARK MOMENT) ============ -->
+<div data-section-scale="1" style="background:#16150F;color:#F7F5F0;padding:150px 40px 0;border-radius:28px;margin:0 16px 16px;overflow:hidden;will-change:transform">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="text-align:left;max-width:960px">
+      <div data-reveal="1" style="font-size:13px;color:rgba(247,245,240,0.45);margin-bottom:28px">New projects — two slots open this quarter</div>
+      <h2 style="font-size:clamp(48px,6.4vw,100px);font-weight:600;letter-spacing:-0.038em;line-height:1.02;margin:0">
+        <span style="display:block;overflow:hidden"><span data-line="1" style="display:block">Tell us what</span></span>
+        <span style="display:block;overflow:hidden"><span data-line="1" style="display:block">you're building<span style="color:#C74A26">.</span></span></span>
+      </h2>
+      <div data-reveal="1" style="display:flex;align-items:center;gap:28px;margin-top:56px;flex-wrap:wrap">
+        <a href="Contact.dc.html" data-magnetic="1" style="display:inline-flex;align-items:center;gap:12px;background:#F7F5F0;color:#16150F;font-size:15.5px;font-weight:500;padding:18px 36px;border-radius:999px;transition:background 240ms ease,color 240ms ease" style-hover="background:#C74A26;color:#F7F5F0">Get in touch <span data-btn-arrow="1" style="display:inline-block;font-size:16px;line-height:1;transition:transform 240ms ease">→</span></a>
+        <a href="Contact.dc.html" style="font-size:15.5px;color:rgba(247,245,240,0.75);border-bottom:1px solid rgba(247,245,240,0.3);padding-bottom:3px" style-hover="color:#F7F5F0;border-color:#C74A26">hello@levantatelabs.com</a>
+      </div>
+      <p data-reveal="1" style="max-width:420px;font-size:15px;line-height:1.65;color:rgba(247,245,240,0.5);margin:40px 0 0">We take on a small number of projects at a time, and we stay from the first diagram to production.</p>
+    </div>
+    <div data-rgrid="1" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-top:130px;padding-top:40px;border-top:1px solid rgba(247,245,240,0.14)">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px"><img src="assets/logo-light.svg" style="width:22px" alt=""><span style="font-size:15.5px;font-weight:600;letter-spacing:-0.015em">Levantate Labs</span></div>
+        <p style="font-size:13.5px;line-height:1.65;color:rgba(247,245,240,0.45);max-width:280px;margin:18px 0 0">Engineering studio. Web platforms, AI systems, blockchain — built end to end.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:14px">
+        <a href="Services.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Services</a>
+        <a href="Products.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Products</a>
+        <a href="About.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">About</a>
+        <a href="Insights.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Insights</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:14px">
+        <a href="Contact.dc.html" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">Contact</a>
+        <a href="#" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">LinkedIn</a>
+        <a href="#" style="color:rgba(247,245,240,0.65)" style-hover="color:#F7F5F0">X / Twitter</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:24px;margin-top:56px;font-size:12.5px;color:rgba(247,245,240,0.35);position:relative;z-index:2">
+      <span>© 2026 Levantate Labs</span>
+      <span>Built properly.</span>
+    </div>
+  </div>
+  <div style="overflow:hidden;margin-top:-52px;line-height:0;border-radius:0 0 28px 28px">
+    <div data-wordmark="1" style="font-size:clamp(120px,17.5vw,320px);font-weight:700;letter-spacing:-0.045em;line-height:0.76;text-align:center;background:linear-gradient(180deg,rgba(247,245,240,0.16) 0%,rgba(247,245,240,0.05) 62%,rgba(247,245,240,0) 96%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;pointer-events:none;transform:translateY(6%)">Levantate</div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motion&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;full&quot;, &quot;options&quot;: [&quot;full&quot;, &quot;reduced&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!customElements.get('image-slot')) {
+      const s = document.createElement('script');
+      s.src = 'image-slot.js';
+      document.head.appendChild(s);
+    }
+    const reduced = (this.props.motion ?? 'full') === 'reduced';
+    if (reduced) return;
+    // wait for gsap CDN if still loading
+    this._gsapWait = setInterval(() => {
+      if (window.gsap && window.ScrollTrigger) {
+        clearInterval(this._gsapWait);
+        this._initGsap();
+      }
+    }, 60);
+    setTimeout(() => { if (!window.gsap) { clearInterval(this._gsapWait); this._initFallback(); } }, 3000);
+  }
+
+  _initGsap() {
+    const gsap = window.gsap;
+    gsap.registerPlugin(window.ScrollTrigger);
+
+    // ---- HERO load timeline (char-split headline + staged items) ----
+    const splitChars = (el) => {
+      const out = [];
+      const walk = (node) => {
+        Array.from(node.childNodes).forEach(child => {
+          if (child.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            child.textContent.split('').forEach(ch => {
+              if (ch === ' ') { frag.appendChild(document.createTextNode(' ')); return; }
+              const s = document.createElement('span');
+              s.textContent = ch; s.style.display = 'inline-block'; s.style.willChange = 'transform';
+              out.push(s); frag.appendChild(s);
+            });
+            node.replaceChild(frag, child);
+          } else if (child.nodeType === 1) walk(child);
+        });
+      };
+      walk(el); return out;
+    };
+    const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    document.querySelectorAll('[data-chars]').forEach((line, li) => {
+      const chars = splitChars(line);
+      heroTl.fromTo(chars, { yPercent: 120, rotateZ: 4 }, {
+        yPercent: 0, rotateZ: 0, duration: 1.1, stagger: 0.016
+      }, 0.15 + li * 0.12);
+    });
+    heroTl.fromTo('[data-hero-item]', { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.1 }, 0.55);
+    heroTl.fromTo('[data-chip]', { y: 14, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.6, stagger: 0.06, ease: 'back.out(2)' }, 0.9);
+    heroTl.fromTo('[data-hero-media]', { clipPath: 'inset(12% 8% 12% 8% round 24px)', opacity: 0.001 }, { clipPath: 'inset(0% 0% 0% 0% round 20px)', opacity: 1, duration: 1.4, ease: 'power3.inOut' }, 0.7);
+    // scroll cue pulse
+    const cue = document.querySelector('[data-scroll-cue]');
+    if (cue) gsap.fromTo(cue, { scaleX: 0.2, opacity: 0.4 }, { scaleX: 1, opacity: 1, duration: 1.1, ease: 'power2.inOut', repeat: -1, yoyo: true });
+
+    // CTA line masks (scroll-triggered)
+    document.querySelectorAll('[data-line]').forEach((el, i) => {
+      gsap.fromTo(el, { yPercent: 110 }, {
+        yPercent: 0, duration: 1.1, ease: 'power4.out', delay: 0.08 * i,
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    // dark sections scale in as they enter
+    document.querySelectorAll('[data-section-scale]').forEach(el => {
+      gsap.fromTo(el, { scale: 0.96 }, {
+        scale: 1, ease: 'none',
+        scrollTrigger: { trigger: el, start: 'top 95%', end: 'top 35%', scrub: true }
+      });
+    });
+
+    // giant footer wordmark rises with scroll
+    const wm = document.querySelector('[data-wordmark]');
+    if (wm) gsap.fromTo(wm, { yPercent: 55 }, {
+      yPercent: 6, ease: 'none',
+      scrollTrigger: { trigger: wm.parentElement, start: 'top bottom', end: 'bottom bottom', scrub: true }
+    });
+
+    // generic reveals
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      gsap.fromTo(el, { y: 28, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 1, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    // word-by-word statement reveal
+    document.querySelectorAll('[data-words]').forEach(el => {
+      const walk = (node) => {
+        Array.from(node.childNodes).forEach(child => {
+          if (child.nodeType === 3 && child.textContent.trim()) {
+            const frag = document.createDocumentFragment();
+            child.textContent.split(/(\s+)/).forEach(w => {
+              if (!w.trim()) { frag.appendChild(document.createTextNode(w)); return; }
+              const s = document.createElement('span');
+              s.textContent = w; s.style.display = 'inline-block'; s.setAttribute('data-w', '1');
+              frag.appendChild(s);
+            });
+            node.replaceChild(frag, child);
+          } else if (child.nodeType === 1) walk(child);
+        });
+      };
+      walk(el);
+      gsap.fromTo(el.querySelectorAll('[data-w]'), { opacity: 0.12 }, {
+        opacity: 1, stagger: 0.02, ease: 'none',
+        scrollTrigger: { trigger: el, start: 'top 80%', end: 'top 35%', scrub: true }
+      });
+    });
+
+    // parallax media (scrubbed)
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const f = parseFloat(el.getAttribute('data-parallax')) || 0.06;
+      gsap.fromTo(el, { yPercent: -f * 100, scale: 1.12 }, {
+        yPercent: f * 100, scale: 1.12, ease: 'none',
+        scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+    });
+
+    // media frames clip-reveal
+    document.querySelectorAll('[data-media-frame]').forEach(el => {
+      gsap.fromTo(el, { clipPath: 'inset(6% 4% 6% 4% round 20px)' }, {
+        clipPath: 'inset(0% 0% 0% 0% round 20px)', ease: 'power2.out', duration: 1.2,
+        scrollTrigger: { trigger: el, start: 'top 80%' }
+      });
+    });
+
+    // marquee — infinite, speeds up with scroll velocity
+    const track = document.querySelector('[data-marquee]');
+    if (track) {
+      const half = track.scrollWidth / 2;
+      let x = 0, vel = 0;
+      this._st = window.ScrollTrigger.create({
+        onUpdate: (self) => { vel = self.getVelocity() / 900; }
+      });
+      this._tick = () => {
+        x -= (0.8 + Math.min(Math.abs(vel), 6));
+        vel *= 0.94;
+        if (-x >= half) x += half;
+        const skew = Math.max(-8, Math.min(8, vel * 1.6));
+        track.style.transform = 'translateX(' + x + 'px) skewX(' + skew + 'deg)';
+      };
+      gsap.ticker.add(this._tick);
+    }
+
+    // count-ups
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      gsap.fromTo(el, { textContent: 0 }, {
+        textContent: target, duration: 1.6, ease: 'power2.out', snap: { textContent: 1 },
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    // magnetic buttons
+    document.querySelectorAll('[data-magnetic]').forEach(btn => {
+      const arrow = btn.querySelector('[data-btn-arrow]');
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.18, y: (e.clientY - r.top - r.height / 2) * 0.3, duration: 0.4, ease: 'power2.out' });
+        if (arrow) arrow.style.transform = 'translateX(4px)';
+      });
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,0.5)' });
+        if (arrow) arrow.style.transform = 'translateX(0)';
+      });
+    });
+  }
+
+  _initFallback() {
+    const els = Array.from(document.querySelectorAll('[data-reveal],[data-line]'));
+    els.forEach(el => {
+      el.style.opacity = '0'; el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 800ms cubic-bezier(0.22,1,0.36,1), transform 800ms cubic-bezier(0.22,1,0.36,1)';
+    });
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; this._io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el => this._io.observe(el));
+  }
+
+  componentWillUnmount() {
+    if (this._gsapWait) clearInterval(this._gsapWait);
+    if (this._io) this._io.disconnect();
+    if (this._tick && window.gsap) window.gsap.ticker.remove(this._tick);
+    if (this._st) this._st.kill();
+    if (window.ScrollTrigger) window.ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+
+  renderVals() {
+    return {
+      marqueeItems: ["Web platforms", "AI systems", "Enterprise software", "Blockchain", "ML pipelines", "Web platforms", "AI systems", "Enterprise software", "Blockchain", "ML pipelines"],
+      services: [
+        { title: "AI & machine learning", sub: "Automation, assistants and ML pipelines built for production — not demos. We handle data, models, and the software around them." },
+        { title: "Web & product engineering", sub: "Full platforms: architecture, build, launch, and the iteration after launch. Frontend to infrastructure." },
+        { title: "Enterprise software", sub: "Systems that survive procurement, compliance reviews and hundred-tenant scale." },
+        { title: "Blockchain", sub: "Smart contracts, infrastructure, and the product layer that makes them usable." },
+        { title: "AI for SaaS", sub: "Embedding intelligence into products people already use — designed, built and maintained." }
+      ],
+      phases: [
+        { num: "01", span: "Weeks 1–2", title: "Understand", body: "We sit with the problem until we can explain it back better than we heard it. Architecture starts here, not in a slide." },
+        { num: "02", span: "Weeks 2–4", title: "Design the system", body: "Data models, service boundaries, interfaces — the decisions that are expensive to change get made deliberately." },
+        { num: "03", span: "The long middle", title: "Build & ship", body: "Small releases from early on. You see working software in weeks, not a reveal at the end." },
+        { num: "04", span: "Ongoing", title: "Run & improve", body: "We stay after launch — monitoring, iteration, and the unglamorous work that keeps systems healthy." }
+      ].map((p, i) => ({
+        ...p,
+        cardStyle: {
+          background: ["#EFEAE0", "#E9E0D2", "#E3E6DC", "#EDE6DC"][i],
+          borderRadius: "20px", padding: "36px", minHeight: "260px",
+          display: "flex", flexDirection: "column", gap: "24px"
+        }
+      })),
+      posts: [
+        { imgId: "post-1", imgHint: "Article visual", tag: "Engineering", date: "Jun 2026", title: "Why we design the data model before anything else" },
+        { imgId: "post-2", imgHint: "Article visual", tag: "AI", date: "May 2026", title: "Shipping AI features that survive contact with real users" },
+        { imgId: "post-3", imgHint: "Article visual", tag: "Studio", date: "Apr 2026", title: "What 'end to end' actually means when we say it" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

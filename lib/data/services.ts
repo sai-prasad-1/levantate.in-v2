@@ -1,0 +1,67 @@
+export const servicesPage = [
+  {
+    num: "01",
+    title: "AI & machine learning",
+    body: "Automation, assistants and ML pipelines built for production — not demos. We handle the data, the models, and the software around them.",
+    items: [
+      "Workflow automation & agents",
+      "ML pipelines & data infrastructure",
+      "Voice & conversational systems",
+      "Evaluation, monitoring, iteration",
+    ],
+    imgId: "svc-ai",
+    imgHint: "AI systems — visual",
+  },
+  {
+    num: "02",
+    title: "Web & product engineering",
+    body: "Full platforms: architecture, build, launch, and the iteration after launch. Frontend to infrastructure, one team.",
+    items: [
+      "Product architecture & design",
+      "Full-stack web applications",
+      "APIs & integrations",
+      "Performance & reliability",
+    ],
+    imgId: "svc-web",
+    imgHint: "Web platform — visual",
+  },
+  {
+    num: "03",
+    title: "Enterprise software",
+    body: "Systems that survive procurement, compliance reviews and hundred-tenant scale. We've done it — our builds serve 100+ enterprises today.",
+    items: [
+      "Multi-tenant SaaS platforms",
+      "Admin & internal tooling",
+      "Security & compliance readiness",
+      "Migrations & modernisation",
+    ],
+    imgId: "svc-ent",
+    imgHint: "Enterprise platform — visual",
+  },
+  {
+    num: "04",
+    title: "Blockchain",
+    body: "Smart contracts, infrastructure, and the product layer that makes them usable by real people.",
+    items: [
+      "Smart contract development",
+      "Protocol & infrastructure work",
+      "Wallets & on-chain products",
+      "Audit preparation",
+    ],
+    imgId: "svc-chain",
+    imgHint: "Blockchain — visual",
+  },
+  {
+    num: "05",
+    title: "AI for SaaS",
+    body: "Embedding intelligence into products people already use — designed, built and maintained as part of your product, not bolted on.",
+    items: [
+      "AI feature design & integration",
+      "RAG & retrieval systems",
+      "Fine-tuning & model selection",
+      "Cost & latency engineering",
+    ],
+    imgId: "svc-saas",
+    imgHint: "AI in product — visual",
+  },
+] as const;
