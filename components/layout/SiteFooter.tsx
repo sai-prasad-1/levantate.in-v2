@@ -11,6 +11,8 @@ type SiteFooterProps = {
 
 export function SiteFooter({ variant }: SiteFooterProps) {
   const pathname = usePathname();
+  if (pathname.startsWith("/admin")) return null;
+
   const isContact = pathname === "/contact";
   const showCta = variant === "cta" || (!variant && !isContact);
   const isHome = pathname === "/";

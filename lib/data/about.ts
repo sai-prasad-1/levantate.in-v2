@@ -21,27 +21,31 @@ export const aboutValues = [
 
 export const aboutTeam = [
   {
-    name: "Founder name",
+    name: "Sai Prasad",
     role: "Founder & engineering",
+    bio: "Owns architecture and delivery — the person on the first call is still in the codebase at launch.",
     imgId: "team-1",
-    imgHint: "Portrait",
+    imgHint: "Sai Prasad",
   },
   {
-    name: "Name",
+    name: "Christo Paul",
     role: "Product & design",
+    bio: "Turns messy briefs into calm product surfaces — structure, craft and conversion without the noise.",
     imgId: "team-2",
-    imgHint: "Portrait",
+    imgHint: "Christo Paul",
   },
   {
-    name: "Name",
+    name: "Amal Manoj",
     role: "AI & ML",
+    bio: "Builds production AI that holds up with real users — models, pipelines and the product layer around them.",
     imgId: "team-3",
-    imgHint: "Portrait",
+    imgHint: "Amal Manoj",
   },
   {
-    name: "Name",
-    role: "Platform & infrastructure",
+    name: "Anoop",
+    role: "Web & platforms",
+    bio: "Ships the interfaces and sites teams run every day — fast, solid and easy to keep moving.",
     imgId: "team-4",
-    imgHint: "Portrait",
+    imgHint: "Anoop",
   },
 ] as const;

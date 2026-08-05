@@ -52,11 +52,20 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} — Software your company can stand on`,
     description: siteConfig.description,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — Software your company can stand on`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — Software your company can stand on`,
     description: siteConfig.description,
+    images: ["/twitter-image"],
   },
   robots: {
     index: true,
@@ -69,11 +78,22 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? {
+        verification: {
+          google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        },
+      }
+    : {}),
+  other: {
+    "msapplication-TileColor": "#16150F",
+  },
   icons: {
     icon: [{ url: "/brand/logo-dark.svg", type: "image/svg+xml" }],
     shortcut: ["/brand/logo-dark.svg"],
     apple: [{ url: "/brand/logo-dark.svg" }],
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export const viewport: Viewport = {

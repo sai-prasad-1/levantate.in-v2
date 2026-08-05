@@ -15,9 +15,11 @@ export function JsonLd() {
     <>
       {payloads.map((data, index) => (
         <script
-          key={index}
+          key={`jsonld-${index}`}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+          }}
         />
       ))}
     </>

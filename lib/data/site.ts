@@ -23,8 +23,10 @@ export const siteConfig = {
     "custom software development",
   ],
   social: [
-    { label: "LinkedIn", href: "#" },
-    { label: "X / Twitter", href: "#" },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/company/levantatelabs",
+    },
   ],
 } as const;
 

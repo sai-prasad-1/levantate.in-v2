@@ -72,18 +72,21 @@ export const homePhases = [
 
 export const homePosts = [
   {
+    slug: "why-we-design-the-data-model-before-anything-else",
     imgId: "post-1",
     tag: "Engineering",
     date: "Jun 2026",
     title: "Why we design the data model before anything else",
   },
   {
+    slug: "shipping-ai-features-that-survive-real-users",
     imgId: "post-2",
     tag: "AI",
     date: "May 2026",
     title: "Shipping AI features that survive contact with real users",
   },
   {
+    slug: "what-end-to-end-actually-means",
     imgId: "post-3",
     tag: "Studio",
     date: "Apr 2026",

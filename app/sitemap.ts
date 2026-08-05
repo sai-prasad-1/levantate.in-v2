@@ -1,14 +1,21 @@
 import type { MetadataRoute } from "next";
-import { siteRoutes } from "@/lib/data/site";
-import { absoluteUrl } from "@/lib/seo";
+import {
+  getInsightSitemapEntries,
+  getPageSitemapEntries,
+} from "@/lib/seo";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+export async function generateSitemaps() {
+  return [{ id: "pages" }, { id: "insights" }];
+}
 
-  return siteRoutes.map((route) => ({
-    url: absoluteUrl(route.path),
-    lastModified,
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }));
+export default async function sitemap(props: {
+  id: Promise<string>;
+}): Promise<MetadataRoute.Sitemap> {
+  const id = await props.id;
+
+  if (id === "insights") {
+    return getInsightSitemapEntries();
+  }
+
+  return getPageSitemapEntries();
 }

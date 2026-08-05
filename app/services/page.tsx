@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ImageSlot } from "@/components/ui/ImageSlot";
-import { homePhases } from "@/lib/data/home";
+import { WorkPhases } from "@/components/ui/WorkPhases";
 import { servicesPage } from "@/lib/data/services";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -143,57 +143,20 @@ export default function ServicesPage() {
       </section>
 
       <section className="page-x py-16 sm:py-24 md:py-32">
-        <div className="mx-auto max-w-site overflow-hidden rounded-[24px] bg-ink px-6 py-14 text-bone sm:rounded-[28px] sm:px-10 sm:py-20">
-          <div
-            data-reveal="1"
-            className="mb-4 font-mono text-[12px] tracking-[0.08em] text-[rgba(247,245,240,0.45)] uppercase"
-          >
-            How we work
-          </div>
-          <h2
-            data-reveal="1"
-            className="mb-12 max-w-[700px] text-[clamp(32px,4vw,52px)] font-semibold leading-[1.08] tracking-[-0.03em] sm:mb-16"
-          >
-            Four phases. One team,
-            <br />
-            the whole way through
-            <span className="text-ember">.</span>
-          </h2>
-
-          <div className="rgrid grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {homePhases.map((p) => (
-              <div
-                key={p.num}
-                data-reveal="1"
-                className="flex min-h-[220px] flex-col gap-6 rounded-[18px] p-7 sm:p-8"
-                style={{ background: p.bg, color: "#16150F" }}
-              >
-                <div className="flex items-baseline justify-between">
-                  <div className="font-mono text-[12px] text-[rgba(22,21,15,0.45)]">
-                    {p.num}
-                  </div>
-                  <div className="font-mono text-[11px] text-[rgba(22,21,15,0.4)]">
-                    {p.span}
-                  </div>
-                </div>
-                <div className="mt-auto">
-                  <div className="text-[24px] font-semibold tracking-[-0.02em] sm:text-[26px]">
-                    {p.title}
-                  </div>
-                  <p className="mt-3 mb-0 text-[14.5px] leading-[1.65] text-[rgba(22,21,15,0.6)]">
-                    {p.body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
+        <WorkPhases eyebrow="How we work" />
+        <div className="mx-auto mt-12 max-w-site sm:mt-14">
           <Link
             data-reveal="1"
             href="/contact"
-            className="button-light mt-10 inline-flex items-center gap-3 rounded-full px-8 py-4 text-[15px] font-medium"
+            className="button-dark inline-flex items-center gap-3 rounded-full px-8 py-4 text-[15px] font-medium"
           >
-            Start a conversation <span>→</span>
+            Start a conversation{" "}
+            <span
+              data-btn-arrow="1"
+              className="inline-block text-base leading-none transition-transform duration-[240ms] ease-out"
+            >
+              →
+            </span>
           </Link>
         </div>
       </section>

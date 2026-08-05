@@ -4,13 +4,47 @@ import { FormEvent, useState } from "react";
 import { contactNeeds } from "@/lib/data/contact";
 import { siteConfig } from "@/lib/data/site";
 
-export function ContactClient() {
+export function ContactClient({ calendlyUrl }: { calendlyUrl?: string }) {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<Record<string, boolean>>({});
+  const bookingUrl = calendlyUrl?.trim() || "";
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    setSubmitting(true);
+    setError(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: String(formData.get("name") || ""),
+          email: String(formData.get("email") || ""),
+          company: String(formData.get("company") || "") || null,
+          needs: contactNeeds.filter((label) => selected[label]),
+          message: String(formData.get("message") || ""),
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Could not send your note");
+      }
+
+      setSent(true);
+      form.reset();
+      setSelected({});
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not send your note");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -53,6 +87,19 @@ export function ContactClient() {
                 {siteConfig.email}
               </a>
             </div>
+            {bookingUrl ? (
+              <div>
+                <div className="mb-1.5 text-[12.5px] text-smoke">Book a call</div>
+                <a
+                  href={bookingUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border-b border-[rgba(22,21,15,0.3)] pb-0.5 text-[17px] font-medium transition-colors hover:border-ember"
+                >
+                  Schedule on Calendly
+                </a>
+              </div>
+            ) : null}
             <div>
               <div className="mb-1.5 text-[12.5px] text-smoke">Elsewhere</div>
               <div className="flex gap-5 text-[15px] font-medium">
@@ -82,9 +129,33 @@ export function ContactClient() {
               <p className="m-0 text-[15.5px] leading-[1.65] text-[rgba(22,21,15,0.6)]">
                 We&apos;ve got your note and will reply within two working days.
               </p>
+              {bookingUrl ? (
+                <a
+                  href={bookingUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-flex self-center border-b border-[rgba(22,21,15,0.3)] pb-0.5 text-[15px] font-medium hover:border-ember"
+                >
+                  Or book a call →
+                </a>
+              ) : null}
             </div>
           ) : (
             <form onSubmit={onSubmit} className="flex flex-col gap-7">
+              {bookingUrl ? (
+                <div className="rounded-[14px] bg-panel-warm px-4 py-3.5 text-[13.5px] leading-[1.55] text-[rgba(22,21,15,0.7)]">
+                  Prefer a call?{" "}
+                  <a
+                    href={bookingUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="border-b border-[rgba(22,21,15,0.3)] pb-0.5 font-medium text-ink hover:border-ember"
+                  >
+                    Book time on Calendly
+                  </a>
+                </div>
+              ) : null}
+
               <div className="rgrid grid grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="c-name" className="text-[12.5px] text-muted">
@@ -128,14 +199,21 @@ export function ContactClient() {
               </div>
 
               <div className="flex flex-col gap-3">
-                <div className="text-[12.5px] text-muted">What do you need?</div>
-                <div className="flex flex-wrap gap-2">
+                <div className="text-[12.5px] text-muted" id="c-needs-label">
+                  What do you need?
+                </div>
+                <div
+                  className="flex flex-wrap gap-2"
+                  role="group"
+                  aria-labelledby="c-needs-label"
+                >
                   {contactNeeds.map((label) => {
                     const on = Boolean(selected[label]);
                     return (
                       <button
                         key={label}
                         type="button"
+                        aria-pressed={on}
                         onClick={() =>
                           setSelected((s) => ({ ...s, [label]: !s[label] }))
                         }
@@ -169,9 +247,10 @@ export function ContactClient() {
               <button
                 type="submit"
                 data-magnetic="1"
-                className="button-dark inline-flex cursor-pointer items-center justify-center gap-3 self-start rounded-full border-0 px-[34px] py-[17px] text-[15.5px] font-medium"
+                disabled={submitting}
+                className="button-dark inline-flex cursor-pointer items-center justify-center gap-3 self-start rounded-full border-0 px-[34px] py-[17px] text-[15.5px] font-medium disabled:opacity-60"
               >
-                Send the note{" "}
+                {submitting ? "Sending…" : "Send the note"}{" "}
                 <span
                   data-btn-arrow="1"
                   className="inline-block text-base leading-none transition-transform duration-[240ms] ease-out"
@@ -179,6 +258,11 @@ export function ContactClient() {
                   →
                 </span>
               </button>
+              {error ? (
+                <p className="m-0 text-[13.5px] text-ember" role="alert">
+                  {error}
+                </p>
+              ) : null}
             </form>
           )}
         </div>

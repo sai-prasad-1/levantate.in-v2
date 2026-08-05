@@ -18,10 +18,12 @@ export function SiteNav() {
     };
   }, [open]);
 
+  if (pathname.startsWith("/admin")) return null;
+
   const close = () => setOpen(false);
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-[100] border-b border-line-soft bg-[rgba(247,245,240,0.82)] text-ink backdrop-blur-[14px]">
+    <header className="fixed top-0 right-0 left-0 z-[100] border-b border-line-soft bg-[rgba(255,255,255,0.9)] text-ink backdrop-blur-[14px]">
       <div className="mx-auto flex max-w-site items-center justify-between px-5 py-4 sm:px-8 sm:py-[22px] md:px-10">
         <Link
           href="/"
@@ -104,7 +106,7 @@ export function SiteNav() {
       </div>
 
       {open ? (
-        <div className="border-t border-line-soft bg-bone px-5 py-8 md:hidden">
+        <div className="border-t border-line-soft bg-white px-5 py-8 md:hidden">
           <nav className="flex flex-col gap-5 text-[18px] font-medium">
             {navLinks.map((link) => (
               <Link

@@ -4,7 +4,6 @@ import { HeroMedia } from "@/components/ui/HeroMedia";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import {
   homeChips,
-  homePhases,
   homePosts,
   homeServices,
   homeStats,
@@ -13,6 +12,7 @@ import {
 import { siteConfig } from "@/lib/data/site";
 import { selectedWork, testimonials } from "@/lib/data/work";
 import { createPageMetadata } from "@/lib/seo";
+import { WorkPhases } from "@/components/ui/WorkPhases";
 
 export const metadata = createPageMetadata({
   title: "Software your company can stand on",
@@ -22,7 +22,7 @@ export const metadata = createPageMetadata({
 
 export default function HomePage() {
   return (
-    <>
+    <div className="bg-white">
       {/* HERO — original light UI */}
       <section className="relative px-5 pt-[120px] sm:px-8 sm:pt-[150px] md:px-10 md:pt-[180px]">
         <div className="mx-auto max-w-site">
@@ -128,7 +128,7 @@ export default function HomePage() {
       </section>
 
       {/* ── PROOF STRIP ── */}
-      <section className="page-x border-b border-line bg-bone">
+      <section className="page-x border-b border-line bg-white">
         <div className="rgrid mx-auto grid max-w-site grid-cols-2 gap-0 md:grid-cols-4">
           {homeStats.map((stat, i) => (
             <div
@@ -342,67 +342,7 @@ export default function HomePage() {
 
       {/* ── PROCESS ── */}
       <section className="page-x py-20 sm:py-28 md:py-32">
-        <div className="mx-auto max-w-site">
-          <div className="mb-14 grid grid-cols-1 gap-8 lg:mb-20 lg:grid-cols-[1.25fr_0.75fr] lg:items-end lg:gap-20">
-            <div className="max-w-[760px]">
-              <div
-                data-reveal="1"
-                className="mb-4 font-mono text-[12px] tracking-[0.08em] text-smoke uppercase"
-              >
-                <span className="mr-2 inline-block h-[6px] w-[6px] bg-ember" />
-                03 — How we work
-              </div>
-              <h2
-                data-reveal="1"
-                className="m-0 text-[clamp(32px,4vw,52px)] font-semibold leading-[1.08] tracking-[-0.03em]"
-              >
-                Four phases. One team,
-                <br className="hidden sm:block" /> the whole way through
-                <span className="text-ember">.</span>
-              </h2>
-            </div>
-            <p
-              data-reveal="1"
-              className="m-0 max-w-[360px] text-[15px] leading-[1.7] text-[rgba(22,21,15,0.55)] lg:justify-self-end"
-            >
-              No handoffs between departments. The people who design the system
-              are the people who ship it.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 border-t border-line md:grid-cols-2">
-            {homePhases.map((p, index) => (
-              <article
-                key={p.num}
-                data-reveal="1"
-                className={`group grid grid-cols-[44px_1fr] gap-5 border-b border-line py-9 sm:grid-cols-[56px_1fr] sm:gap-7 sm:py-12 ${
-                  index % 2 === 1 ? "md:border-l md:pl-10 lg:pl-14" : "md:pr-10 lg:pr-14"
-                }`}
-              >
-                <div className="pt-1">
-                  <span className="font-mono text-[11px] tracking-[0.06em] text-smoke">
-                    /{p.num}
-                  </span>
-                </div>
-
-                <div>
-                  <div className="flex flex-wrap items-baseline justify-between gap-3">
-                    <h3 className="m-0 text-[clamp(26px,3vw,36px)] font-semibold tracking-[-0.028em]">
-                      {p.title}
-                    </h3>
-                    <span className="font-mono text-[11px] tracking-[0.05em] text-smoke uppercase">
-                      {p.span}
-                    </span>
-                  </div>
-                  <p className="mt-4 mb-0 max-w-[440px] text-[15px] leading-[1.7] text-[rgba(22,21,15,0.58)]">
-                    {p.body}
-                  </p>
-                  <div className="mt-7 h-[3px] w-8 bg-ember transition-[width] duration-300 group-hover:w-14" />
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
+        <WorkPhases />
       </section>
 
       {/* ── PRODUCTS: stacked bands ── */}
@@ -472,49 +412,82 @@ export default function HomePage() {
               </div>
             </Link>
 
-            <div className="rgrid grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div
+            <div className="rgrid grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+              {/* Elevox */}
+              <Link
+                href="/products"
                 data-reveal="1"
-                className="flex min-h-[200px] flex-col overflow-hidden rounded-[20px] border border-[rgba(22,21,15,0.1)] bg-bone sm:min-h-[260px]"
+                className="group flex flex-col overflow-hidden rounded-[18px] bg-panel-warm transition-transform duration-300 ease-out hover:-translate-y-0.5"
               >
-                <div className="relative aspect-[1569/943] w-full border-b border-[rgba(22,21,15,0.08)] bg-[#f7f6fb]">
+                <div className="relative mx-4 mt-4 aspect-[16/9] overflow-hidden rounded-[12px] bg-[#ddd9d0] sm:mx-5 sm:mt-5">
                   <Image
                     src="/elevox.png"
                     alt="Elevox — Call AI landing"
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-contain object-top"
+                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-[rgba(22,21,15,0.22)] mix-blend-multiply"
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(239,234,224,0.05)_0%,rgba(239,234,224,0.45)_100%)]"
                   />
                 </div>
-                <div className="flex flex-1 flex-col justify-between gap-5 p-7 sm:p-8">
-                  <span className="self-start rounded-full border border-[rgba(22,21,15,0.25)] px-3 py-1 text-[12px] font-medium">
-                    In development
-                  </span>
-                  <div>
-                    <div className="text-[24px] font-semibold tracking-[-0.022em] sm:text-[28px]">
-                      Elevox
-                    </div>
-                    <p className="mt-3 mb-0 text-[14.5px] leading-[1.65] text-[rgba(22,21,15,0.6)]">
-                      Call AI — handles calls, qualifies leads, works alongside
-                      sales in real time.
+                <div className="flex flex-1 flex-col gap-2 px-5 py-5 sm:px-6 sm:py-6">
+                  <span className="text-[13px] text-smoke">In development</span>
+                  <h3 className="m-0 text-[22px] font-semibold tracking-[-0.022em] sm:text-[24px]">
+                    Elevox
+                  </h3>
+                  <p className="m-0 text-[14px] leading-[1.6] text-[rgba(22,21,15,0.6)]">
+                    Call AI for sales — answers, qualifies, and works alongside
+                    your team in real time.
+                  </p>
+                </div>
+              </Link>
+
+              {/* Stealth */}
+              <div
+                data-reveal="1"
+                className="group flex flex-col overflow-hidden rounded-[18px] bg-panel-sage"
+              >
+                <div className="relative mx-4 mt-4 flex aspect-[16/9] items-end overflow-hidden rounded-[12px] bg-ink p-5 sm:mx-5 sm:mt-5 sm:p-6">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 opacity-40"
+                    style={{
+                      backgroundImage:
+                        "radial-gradient(circle at 78% 28%, rgba(199,74,38,0.35), transparent 42%), linear-gradient(135deg, rgba(247,245,240,0.06) 0%, transparent 55%)",
+                    }}
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 opacity-[0.12]"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(rgba(247,245,240,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(247,245,240,0.5) 1px, transparent 1px)",
+                      backgroundSize: "28px 28px",
+                      maskImage:
+                        "radial-gradient(circle at 70% 40%, black, transparent 70%)",
+                    }}
+                  />
+                  <div className="relative">
+                    <div className="h-[3px] w-8 bg-ember" />
+                    <p className="mt-3 mb-0 max-w-[200px] text-[13px] leading-[1.5] text-[rgba(247,245,240,0.45)]">
+                      Name withheld · systems intelligence
                     </p>
                   </div>
                 </div>
-              </div>
-              <div
-                data-reveal="1"
-                className="flex min-h-[200px] flex-col justify-between gap-8 rounded-[20px] bg-ink p-7 text-bone sm:min-h-[260px] sm:p-8"
-              >
-                <span className="self-start rounded-full border border-[rgba(247,245,240,0.28)] px-3 py-1 text-[12px] font-medium text-[rgba(247,245,240,0.75)]">
-                  Stealth
-                </span>
-                <div>
-                  <div className="text-[24px] font-semibold tracking-[-0.022em] sm:text-[28px]">
+                <div className="flex flex-1 flex-col gap-2 px-5 py-5 sm:px-6 sm:py-6">
+                  <span className="text-[13px] text-smoke">Stealth</span>
+                  <h3 className="m-0 text-[22px] font-semibold tracking-[-0.022em] sm:text-[24px]">
                     Inside the stack
-                  </div>
-                  <p className="mt-3 mb-0 text-[14.5px] leading-[1.65] text-[rgba(247,245,240,0.55)]">
+                  </h3>
+                  <p className="m-0 text-[14px] leading-[1.6] text-[rgba(22,21,15,0.6)]">
                     An AI system that watches how things run — and acts before
-                    someone has to. Name stays sealed until it&apos;s ready.
+                    someone has to.
                   </p>
                 </div>
               </div>
@@ -547,70 +520,36 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1.35fr_1fr] lg:gap-5">
-            {/* Featured — Kiril */}
-            <figure
-              data-reveal="1"
-              className="relative flex min-h-[420px] flex-col overflow-hidden rounded-[24px] bg-ink p-8 text-bone sm:min-h-[480px] sm:rounded-[28px] sm:p-10 md:p-12"
-            >
-              <div
-                className="pointer-events-none absolute -top-6 -right-4 select-none text-[140px] font-semibold leading-none text-ember/25 sm:text-[180px]"
-                aria-hidden
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+            {testimonials.map((t, i) => (
+              <figure
+                key={t.name}
+                data-reveal="1"
+                className={`flex flex-col rounded-[20px] p-6 sm:p-8 ${
+                  i === 0 ? "bg-panel-warm" : "bg-panel-sand"
+                }`}
               >
-                ”
-              </div>
-              <div className="relative z-[1] mb-8 font-mono text-[12px] tracking-[0.08em] text-[rgba(247,245,240,0.4)] uppercase">
-                01 — Exploitless
-              </div>
-              <blockquote className="relative z-[1] m-0 flex-1 text-[clamp(20px,2.1vw,28px)] font-medium leading-[1.4] tracking-[-0.02em]">
-                {testimonials[0].quote}
-              </blockquote>
-              <figcaption className="relative z-[1] mt-10 flex items-center gap-4 border-t border-[rgba(247,245,240,0.14)] pt-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ember text-[15px] font-semibold text-ink">
-                  {testimonials[0].name.charAt(0)}
+                <div className="mb-5 text-[13.5px] text-smoke">
+                  {i === 0 ? "Exploitless" : "Hospitality"}
                 </div>
-                <div>
-                  <div className="text-[16px] font-semibold tracking-[-0.01em]">
-                    {testimonials[0].name}
+                <blockquote className="m-0 text-[15.5px] leading-[1.65] tracking-[-0.01em] text-[rgba(22,21,15,0.78)] sm:text-[16px]">
+                  “{t.quote}”
+                </blockquote>
+                <figcaption className="mt-6 flex items-center gap-3 border-t border-[rgba(22,21,15,0.1)] pt-5">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-[13px] font-semibold text-bone">
+                    {t.name.charAt(0)}
                   </div>
-                  <div className="mt-1 font-mono text-[11.5px] tracking-[0.06em] text-[rgba(247,245,240,0.45)] uppercase">
-                    {testimonials[0].role}
+                  <div>
+                    <div className="text-[14.5px] font-semibold tracking-[-0.01em]">
+                      {t.name}
+                    </div>
+                    <div className="mt-0.5 text-[13px] text-[rgba(22,21,15,0.5)]">
+                      {t.role}
+                    </div>
                   </div>
-                </div>
-              </figcaption>
-            </figure>
-
-            {/* Secondary — Idukki */}
-            <figure
-              data-reveal="1"
-              className="relative flex min-h-[420px] flex-col overflow-hidden rounded-[24px] bg-panel-sand p-8 sm:min-h-[480px] sm:rounded-[28px] sm:p-10 md:p-12"
-            >
-              <div
-                className="pointer-events-none absolute -top-4 -right-2 select-none text-[120px] leading-none text-ember/20 sm:text-[140px]"
-                aria-hidden
-              >
-                ”
-              </div>
-              <div className="relative z-[1] mb-8 font-mono text-[12px] tracking-[0.08em] text-smoke uppercase">
-                02 — Hospitality
-              </div>
-              <blockquote className="relative z-[1] m-0 flex-1 text-[clamp(18px,1.8vw,24px)] font-medium leading-[1.45] tracking-[-0.018em] text-ink">
-                {testimonials[1].quote}
-              </blockquote>
-              <figcaption className="relative z-[1] mt-10 flex items-center gap-4 border-t border-[rgba(22,21,15,0.12)] pt-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-[15px] font-semibold text-bone">
-                  {testimonials[1].name.charAt(0)}
-                </div>
-                <div>
-                  <div className="text-[16px] font-semibold tracking-[-0.01em] text-ink">
-                    {testimonials[1].name}
-                  </div>
-                  <div className="mt-1 font-mono text-[11.5px] tracking-[0.06em] text-smoke uppercase">
-                    {testimonials[1].role}
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
@@ -647,8 +586,8 @@ export default function HomePage() {
           <div className="border-t border-line">
             {homePosts.map((post) => (
               <Link
-                key={post.title}
-                href="/insights"
+                key={post.slug}
+                href={`/insights/${post.slug}`}
                 data-reveal="1"
                 className="group grid grid-cols-1 items-center gap-4 border-b border-line py-7 sm:grid-cols-[140px_1fr_auto] sm:gap-8 sm:py-8"
               >
@@ -666,6 +605,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

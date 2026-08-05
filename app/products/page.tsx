@@ -121,95 +121,132 @@ export default function ProductsPage() {
       </section>
 
       {/* ELEVOX */}
-      <section className="page-x pt-[100px] sm:pt-[150px]">
-        <div className="rgrid mx-auto grid max-w-site grid-cols-2 items-center gap-16">
-          <div
-            data-reveal="1"
-            data-media-frame="1"
-            className="overflow-hidden rounded-[18px] border border-[rgba(22,21,15,0.1)] bg-[#f7f6fb]"
-          >
-            <Image
-              src="/elevox.png"
-              alt="Elevox — Call AI landing"
-              width={1569}
-              height={943}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="h-auto w-full"
-            />
-          </div>
-          <div>
+      <section className="page-x pt-[100px] sm:pt-[140px]">
+        <div className="mx-auto max-w-site overflow-hidden rounded-[22px] bg-panel-warm">
+          <div className="rgrid grid grid-cols-2 items-stretch gap-0">
             <div
               data-reveal="1"
-              className="mb-7 inline-block rounded-full border border-[rgba(22,21,15,0.25)] px-3 py-[5px] text-[12.5px] font-medium"
+              data-media-frame="1"
+              className="relative min-h-[280px] overflow-hidden sm:min-h-[360px]"
             >
-              In development
+              <Image
+                src="/elevox.png"
+                alt="Elevox — Call AI landing"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-top"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-[rgba(22,21,15,0.2)] mix-blend-multiply"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,transparent_55%,rgba(239,234,224,0.55)_100%)] max-[820px]:bg-[linear-gradient(180deg,transparent_45%,rgba(239,234,224,0.7)_100%)]"
+              />
             </div>
-            <h2
-              data-reveal="1"
-              className="m-0 text-[clamp(34px,4vw,56px)] font-semibold leading-[1.06] tracking-[-0.03em]"
-            >
-              Elevox — Call AI for sales.
-            </h2>
-            <p
-              data-reveal="1"
-              className="mt-6 mb-0 max-w-[440px] text-[16.5px] leading-[1.7] text-[rgba(22,21,15,0.6)]"
-            >
-              An AI that handles calls, qualifies leads and works alongside
-              sales teams in real time — trained on how your team actually sells,
-              not a generic script.
-            </p>
-            <p
-              data-reveal="1"
-              className="mt-6 mb-0 text-sm leading-[1.7] text-smoke"
-            >
-              Currently in build. Reach out if you want a walkthrough or early
-              access.
-            </p>
-            <Link
-              data-reveal="1"
-              href="/contact"
-              className="mt-7 inline-block border-b border-[rgba(22,21,15,0.3)] pb-[3px] text-[15px] font-medium transition-colors hover:border-ember"
-            >
-              Talk to us about Elevox
-            </Link>
+            <div className="flex flex-col justify-center px-8 py-12 sm:px-12 sm:py-16 md:px-14">
+              <div
+                data-reveal="1"
+                className="mb-4 text-[13.5px] text-smoke"
+              >
+                In development
+              </div>
+              <h2
+                data-reveal="1"
+                className="m-0 text-[clamp(30px,3.6vw,48px)] font-semibold leading-[1.08] tracking-[-0.03em]"
+              >
+                Elevox
+              </h2>
+              <p
+                data-reveal="1"
+                className="mt-2 mb-0 text-[15px] font-medium text-[rgba(22,21,15,0.7)]"
+              >
+                Call AI for sales
+              </p>
+              <p
+                data-reveal="1"
+                className="mt-5 mb-0 max-w-[400px] text-[15px] leading-[1.7] text-[rgba(22,21,15,0.6)]"
+              >
+                Handles calls, qualifies leads and works alongside sales teams
+                in real time — trained on how your team actually sells, not a
+                generic script.
+              </p>
+              <p
+                data-reveal="1"
+                className="mt-4 mb-0 text-[13.5px] leading-[1.6] text-smoke"
+              >
+                Currently in build. Reach out for a walkthrough or early access.
+              </p>
+              <Link
+                data-reveal="1"
+                href="/contact"
+                className="mt-7 inline-block w-fit border-b border-[rgba(22,21,15,0.3)] pb-[3px] text-[15px] font-medium transition-colors hover:border-ember"
+              >
+                Talk to us about Elevox
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* STEALTH */}
-      <section className="page-x py-[100px] sm:py-[150px]">
-        <div className="mx-auto max-w-site">
-          <div
-            data-reveal="1"
-            className="flex flex-wrap items-end justify-between gap-12 rounded-[24px] bg-ink px-10 py-16 text-bone sm:px-16 sm:py-20"
-          >
-            <div>
-              <div className="mb-6 inline-block rounded-full border border-[rgba(247,245,240,0.28)] px-3 py-[5px] text-[12.5px] font-medium text-[rgba(247,245,240,0.75)]">
+      <section className="page-x py-[80px] sm:py-[120px]">
+        <div className="mx-auto max-w-site overflow-hidden rounded-[22px] bg-panel-sage">
+          <div className="rgrid grid grid-cols-2 items-stretch gap-0">
+            <div className="relative flex min-h-[240px] flex-col justify-end overflow-hidden bg-ink px-8 py-10 sm:min-h-[320px] sm:px-12 sm:py-14">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-45"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle at 70% 30%, rgba(199,74,38,0.32), transparent 40%), linear-gradient(145deg, rgba(247,245,240,0.06), transparent 50%)",
+                }}
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-[0.1]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(rgba(247,245,240,0.55) 1px, transparent 1px), linear-gradient(90deg, rgba(247,245,240,0.55) 1px, transparent 1px)",
+                  backgroundSize: "32px 32px",
+                  maskImage:
+                    "radial-gradient(circle at 65% 35%, black, transparent 72%)",
+                }}
+              />
+              <div className="relative">
+                <div className="h-[3px] w-9 bg-ember" />
+                <p className="mt-4 mb-0 max-w-[220px] text-[13.5px] leading-[1.55] text-[rgba(247,245,240,0.45)]">
+                  Name withheld · systems intelligence
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center px-8 py-12 sm:px-12 sm:py-16 md:px-14">
+              <div data-reveal="1" className="mb-4 text-[13.5px] text-smoke">
                 Stealth
               </div>
-              <div className="text-[clamp(30px,3.6vw,48px)] font-semibold leading-[1.08] tracking-[-0.028em]">
+              <h2
+                data-reveal="1"
+                className="m-0 text-[clamp(30px,3.6vw,48px)] font-semibold leading-[1.08] tracking-[-0.03em]"
+              >
                 Inside the stack
-              </div>
-              <p className="mt-4 mb-0 max-w-[460px] text-[15.5px] leading-[1.65] text-[rgba(247,245,240,0.55)]">
+              </h2>
+              <p
+                data-reveal="1"
+                className="mt-5 mb-0 max-w-[420px] text-[15px] leading-[1.7] text-[rgba(22,21,15,0.6)]"
+              >
                 Not another chatbot on top of your product. An AI system that
                 learns how your infrastructure behaves — and steps in before a
-                human has to. Name and details stay sealed until they&apos;re
-                ready.
+                human has to.
               </p>
-            </div>
-            <Link
-              href="/contact"
-              data-magnetic="1"
-              className="button-light inline-flex items-center gap-3 rounded-full px-[30px] py-4 text-[15px] font-medium"
-            >
-              Ask us in person{" "}
-              <span
-                data-btn-arrow="1"
-                className="inline-block text-base leading-none transition-transform duration-[240ms] ease-out"
+              <Link
+                data-reveal="1"
+                href="/contact"
+                className="mt-7 inline-block w-fit border-b border-[rgba(22,21,15,0.3)] pb-[3px] text-[15px] font-medium transition-colors hover:border-ember"
               >
-                →
-              </span>
-            </Link>
+                Ask us in person
+              </Link>
+            </div>
           </div>
         </div>
       </section>

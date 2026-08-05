@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactClient } from "./ContactClient";
+import { getCalendlyUrl } from "@/lib/data/settings";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -9,6 +10,7 @@ export const metadata: Metadata = createPageMetadata({
   path: "/contact",
 });
 
-export default function ContactPage() {
-  return <ContactClient />;
+export default async function ContactPage() {
+  const calendlyUrl = await getCalendlyUrl();
+  return <ContactClient calendlyUrl={calendlyUrl} />;
 }

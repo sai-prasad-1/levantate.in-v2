@@ -147,12 +147,15 @@ export default function AboutPage() {
                   <div className="relative h-80 overflow-hidden rounded-2xl bg-panel-warm">
                     <ImageSlot id={t.imgId} label={t.imgHint} />
                   </div>
-                  <div className="mt-4 text-[16.5px] font-semibold">
+                  <div className="mt-4 text-[16.5px] font-semibold tracking-[-0.015em]">
                     {t.name}
                   </div>
                   <div className="mt-[3px] text-[13.5px] text-muted">
                     {t.role}
                   </div>
+                  <p className="mt-2.5 mb-0 text-[13px] leading-[1.55] text-[rgba(22,21,15,0.55)]">
+                    {t.bio}
+                  </p>
                 </div>
               ))}
             </div>
