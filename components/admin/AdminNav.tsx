@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const nav = [
+const nav: ReadonlyArray<{ href: string; label: string; exact?: boolean }> = [
   { href: "/admin", label: "Overview", exact: true },
   { href: "/admin/insights", label: "Insights" },
   { href: "/admin/contacts", label: "Contacts" },
   { href: "/admin/tasks", label: "Tasks" },
   { href: "/admin/settings", label: "Settings" },
-] as const;
+];
 
 export function AdminNav() {
   const pathname = usePathname();

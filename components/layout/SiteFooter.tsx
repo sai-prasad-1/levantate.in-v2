@@ -1,194 +1,93 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks, siteConfig } from "@/lib/data/site";
+import { Serif } from "@/components/site/ui";
+import { siteConfig } from "@/lib/data/site";
 
-type SiteFooterProps = {
-  variant?: "cta" | "minimal";
-};
+const studioLinks = [
+  { label: "Products", href: "/products" },
+  { label: "Services", href: "/services" },
+  { label: "Client work", href: "/work" },
+  { label: "Insights", href: "/insights" },
+];
 
-export function SiteFooter({ variant }: SiteFooterProps) {
+export function SiteFooter() {
   const pathname = usePathname();
   if (pathname.startsWith("/admin")) return null;
 
-  const isContact = pathname === "/contact";
-  const showCta = variant === "cta" || (!variant && !isContact);
-  const isHome = pathname === "/";
+  const linkedIn = siteConfig.social.find((s) => s.label === "LinkedIn")?.href;
 
   return (
-    <footer
-      data-section-scale="1"
-      className="mx-0 mb-0 overflow-hidden rounded-none bg-ink text-bone will-change-transform sm:mx-4 sm:mb-4 sm:rounded-[28px]"
-    >
-      <div
-        className={`mx-auto max-w-site px-5 sm:px-8 md:px-10 ${
-          isHome
-            ? "pt-16 sm:pt-24 md:pt-[150px]"
-            : showCta
-              ? "pt-14 sm:pt-20 md:pt-[120px]"
-              : "pt-12 sm:pt-16 md:pt-[100px]"
-        }`}
-      >
-        {isHome ? (
-          <HomeCtaBlock />
-        ) : showCta ? (
-          <div className="flex flex-col items-start gap-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-12">
-            <h2
-              data-reveal="1"
-              className="m-0 text-[clamp(36px,8vw,80px)] font-semibold leading-[1.04] tracking-[-0.035em]"
-            >
-              Tell us what
-              <br />
-              you&apos;re building<span className="text-ember">.</span>
-            </h2>
-            <Link
-              data-reveal="1"
-              href="/contact"
-              data-magnetic="1"
-              className="button-light inline-flex items-center gap-3 rounded-full px-7 py-4 text-[15px] font-medium sm:px-9 sm:py-[18px] sm:text-[15.5px]"
-            >
-              Get in touch{" "}
-              <span
-                data-btn-arrow="1"
-                className="inline-block text-base leading-none transition-transform duration-[240ms] ease-out"
-              >
-                →
-              </span>
-            </Link>
-          </div>
-        ) : null}
-
-        <div
-          className={`grid grid-cols-1 gap-10 border-t border-[rgba(247,245,240,0.14)] sm:grid-cols-2 sm:gap-12 lg:grid-cols-[2fr_1fr_1fr] ${
-            isHome
-              ? "mt-12 pt-8 sm:mt-16 sm:pt-10 md:mt-[130px]"
-              : showCta
-                ? "mt-12 pt-8 sm:mt-16 sm:pt-10 md:mt-[110px]"
-                : "mt-0 pt-8"
-          }`}
-        >
-          <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-[11px]">
-              <Image
-                src="/brand/logo-light.svg"
-                alt=""
-                width={22}
-                height={22}
-              />
-              <span className="text-[15.5px] font-semibold tracking-[-0.015em]">
-                {siteConfig.name}
-              </span>
-            </div>
-            <p className="mt-4 mb-0 max-w-[320px] text-[13.5px] leading-[1.65] text-[rgba(247,245,240,0.45)] sm:mt-[18px]">
-              {siteConfig.tagline}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-8 sm:contents">
-            <div className="flex flex-col gap-3 text-sm">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-[rgba(247,245,240,0.65)] transition-colors hover:text-bone"
-                >
+    <footer className="overflow-hidden bg-night text-white">
+      <div className="wrap pt-[clamp(72px,9vw,112px)] pb-8">
+        <div className="flex flex-wrap justify-between gap-10">
+          <p className="m-0 text-[clamp(28px,3.4vw,44px)] leading-[1.05] font-semibold tracking-[-0.04em] uppercase">
+            Get up. <Serif onNight>Ship something.</Serif>
+          </p>
+          <div className="flex flex-wrap gap-12 text-[15px]">
+            <div className="flex flex-col gap-2.5">
+              <span className="text-[12px] font-semibold tracking-[0.14em] text-on-night-dim uppercase">Studio</span>
+              {studioLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="text-white! hover:text-accent-glow!">
                   {link.label}
                 </Link>
               ))}
             </div>
-            <div className="flex flex-col gap-3 text-sm">
-              <Link
-                href="/contact"
-                className="text-[rgba(247,245,240,0.65)] transition-colors hover:text-bone"
-              >
-                Contact
-              </Link>
-              {siteConfig.social.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-[rgba(247,245,240,0.65)] transition-colors hover:text-bone"
-                >
-                  {item.label}
+            <div className="flex flex-col gap-2.5">
+              <span className="text-[12px] font-semibold tracking-[0.14em] text-on-night-dim uppercase">Contact</span>
+              <a href={`mailto:${siteConfig.email}`} className="text-white! hover:text-accent-glow!">
+                {siteConfig.email}
+              </a>
+              {linkedIn ? (
+                <a href={linkedIn} target="_blank" rel="noopener noreferrer" className="text-white! hover:text-accent-glow!">
+                  LinkedIn
                 </a>
-              ))}
+              ) : null}
+              <Link href="/contact" className="text-white! hover:text-accent-glow!">
+                Start a project
+              </Link>
             </div>
           </div>
         </div>
 
-        <div className="relative z-[2] mt-10 flex flex-col gap-2 pb-6 text-[12.5px] text-[rgba(247,245,240,0.35)] sm:mt-14 sm:flex-row sm:justify-between sm:gap-6 sm:pb-2">
-          <span>{siteConfig.copyright}</span>
-          <span>{siteConfig.markline}</span>
+        <div className="relative mt-[clamp(56px,8vw,96px)]">
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 100 10"
+            preserveAspectRatio="none"
+            className="block h-[22px] w-full overflow-visible"
+            style={{ filter: "drop-shadow(0 0 5px var(--g1))" }}
+          >
+            <defs>
+              <linearGradient id="footLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" style={{ stopColor: "var(--g0)" }} />
+                <stop offset="0.5" style={{ stopColor: "var(--g1)" }} />
+                <stop offset="1" style={{ stopColor: "var(--g2)" }} />
+              </linearGradient>
+            </defs>
+            <polyline
+              points="0,9 20,9 20,7 40,7 40,5 60,5 60,3 80,3 80,1 100,1"
+              fill="none"
+              stroke="url(#footLine)"
+              strokeWidth="2"
+              strokeLinejoin="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+          <p
+            aria-hidden="true"
+            className="mt-2 mb-0 text-[clamp(56px,15.6vw,222px)] leading-[0.82] font-bold tracking-[-0.045em] whitespace-nowrap"
+          >
+            LEVANTATE
+          </p>
         </div>
-      </div>
 
-      <div className="overflow-hidden leading-[0]">
-        <div
-          data-wordmark="1"
-          className="pointer-events-none select-none bg-[linear-gradient(180deg,rgba(247,245,240,0.16)_0%,rgba(247,245,240,0.05)_62%,rgba(247,245,240,0)_96%)] bg-clip-text text-center text-[clamp(72px,18vw,320px)] font-bold leading-[0.78] tracking-[-0.045em] text-transparent"
-          style={{ transform: "translateY(8%)" }}
-        >
-          Levantate
+        <div className="mt-9 flex flex-wrap justify-between gap-3 border-t border-night-line pt-5 text-[13px] text-on-night-dim">
+          <span>{siteConfig.copyright}</span>
+          <span>Levántate: Spanish for “get up”.</span>
         </div>
       </div>
     </footer>
-  );
-}
-
-function HomeCtaBlock() {
-  return (
-    <div className="max-w-[960px] text-left">
-      <div
-        data-reveal="1"
-        className="mb-5 font-mono text-[12px] tracking-[0.06em] text-[rgba(247,245,240,0.45)] uppercase sm:mb-7"
-      >
-        New projects — two slots open this quarter
-      </div>
-      <h2 className="m-0 text-[clamp(40px,9vw,100px)] font-semibold leading-[1.02] tracking-[-0.038em]">
-        <span className="block overflow-hidden">
-          <span data-line="1" className="block">
-            Tell us what
-          </span>
-        </span>
-        <span className="block overflow-hidden">
-          <span data-line="1" className="block">
-            you&apos;re building<span className="text-ember">.</span>
-          </span>
-        </span>
-      </h2>
-      <div
-        data-reveal="1"
-        className="mt-8 flex flex-col items-start gap-5 sm:mt-14 sm:flex-row sm:flex-wrap sm:items-center sm:gap-7"
-      >
-        <Link
-          href="/contact"
-          data-magnetic="1"
-          className="button-light inline-flex items-center gap-3 rounded-full px-7 py-4 text-[15px] font-medium sm:px-9 sm:py-[18px] sm:text-[15.5px]"
-        >
-          Get in touch{" "}
-          <span
-            data-btn-arrow="1"
-            className="inline-block text-base leading-none transition-transform duration-[240ms] ease-out"
-          >
-            →
-          </span>
-        </Link>
-        <a
-          href={`mailto:${siteConfig.email}`}
-          className="border-b border-[rgba(247,245,240,0.3)] pb-[3px] text-[15px] text-[rgba(247,245,240,0.75)] transition-colors hover:border-ember hover:text-bone sm:text-[15.5px]"
-        >
-          {siteConfig.email}
-        </a>
-      </div>
-      <p
-        data-reveal="1"
-        className="mt-8 mb-0 max-w-[420px] text-[14.5px] leading-[1.65] text-[rgba(247,245,240,0.5)] sm:mt-10 sm:text-[15px]"
-      >
-        We take on a small number of projects at a time, and we stay from the
-        first diagram to production.
-      </p>
-    </div>
   );
 }

@@ -1,165 +1,136 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ImageSlot } from "@/components/ui/ImageSlot";
-import { WorkPhases } from "@/components/ui/WorkPhases";
-import { servicesPage } from "@/lib/data/services";
+import { ProcessTimeline } from "@/components/services/ProcessTimeline";
+import { ServiceVisual } from "@/components/services/ServiceVisual";
+import { ArrowLink, CtaBand, Eyebrow, GradDot, Serif } from "@/components/site/ui";
+import { services } from "@/lib/data/services";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Services",
   description:
-    "AI & machine learning, web & product engineering, enterprise software, blockchain and AI for SaaS — built end to end by one Levantate Labs team.",
+    "Product strategy and design, web and product engineering, AI and machine learning, AI for SaaS, enterprise software and blockchain, built end to end by one team.",
   path: "/services",
   keywords: [
-    "software development services",
-    "AI engineering",
-    "web product engineering",
-    "enterprise software",
+    "product strategy and design",
+    "web and product engineering",
+    "AI and machine learning development",
+    "AI for SaaS",
+    "enterprise software development",
     "blockchain development",
-    "Levantate Labs",
+    "Levantate Labs services",
   ],
 });
+
+const proof = [
+  { value: "100+", label: "Enterprises served" },
+  { value: "12+", label: "Systems shipped" },
+  { value: "5", label: "Products of our own" },
+];
 
 export default function ServicesPage() {
   return (
     <>
-      <section className="page-x pt-[140px] pb-16 sm:pt-[170px] sm:pb-24 md:pt-[200px] md:pb-[100px]">
-        <div className="mx-auto max-w-site">
-          <div
-            data-reveal="1"
-            className="mb-7 font-mono text-[12px] tracking-[0.08em] text-smoke uppercase"
-          >
-            <span className="mr-2 inline-block h-[6px] w-[6px] bg-ember" />
-            Services
-          </div>
-          <h1 className="m-0 max-w-[1050px] text-[clamp(48px,6.4vw,96px)] font-semibold leading-[1.04] tracking-[-0.038em] max-[820px]:text-[clamp(40px,11.5vw,64px)]">
-            <span className="mb-[-0.08em] block overflow-hidden pb-[0.08em]">
-              <span data-line="1" className="block">
-                Everything between the idea
-              </span>
-            </span>
-            <span className="mb-[-0.08em] block overflow-hidden pb-[0.08em]">
-              <span data-line="1" className="block">
-                and production<span className="text-ember">.</span>
-              </span>
-            </span>
-          </h1>
-          <p
-            data-reveal="1"
-            className="mt-12 mb-0 max-w-[520px] text-[18px] leading-[1.6] text-[rgba(22,21,15,0.6)]"
-          >
-            Five disciplines, one team. We don&apos;t hand your project between
-            departments — the people who design the architecture are the people
-            who ship it.
+      {/* ============ HERO ============ */}
+      <header className="wrap pt-[clamp(56px,8vw,112px)]">
+        <Eyebrow className="up d1">Services</Eyebrow>
+        <h1 className="up d2 mt-7 mb-0 text-[clamp(46px,7.2vw,108px)] leading-[0.94] font-semibold tracking-[-0.05em] uppercase">
+          One team, <Serif>start to finish.</Serif>
+        </h1>
+        <div className="up d3 mt-8 flex flex-wrap items-end justify-between gap-8">
+          <p className="m-0 max-w-[620px] text-[clamp(17px,1.5vw,20px)] leading-relaxed text-body">
+            Strategy, design, engineering and operations under one roof. No hand-offs between agencies, no gap between the deck
+            and the deploy. The same senior people from the first call to production, and after.
           </p>
+          <ArrowLink href="/contact">Start a project</ArrowLink>
         </div>
-      </section>
-
-      <section className="page-x pb-10 sm:pb-16">
-        <div className="mx-auto flex max-w-site flex-col gap-20 sm:gap-28 md:gap-36">
-          {servicesPage.map((s, index) => {
-            const mediaLeft = index % 2 === 1;
-            const panelBg = [
-              "#EFEAE0",
-              "#E9E0D2",
-              "#E3E6DC",
-              "#EDE6DC",
-              "#EFEAE0",
-            ][index];
-
-            return (
-              <article
-                key={s.num}
-                className="border-t border-line pt-12 sm:pt-16 md:pt-20"
-              >
-                <div
-                  className={`grid grid-cols-1 items-center gap-10 lg:gap-16 ${
-                    mediaLeft
-                      ? "lg:grid-cols-[1.05fr_0.95fr]"
-                      : "lg:grid-cols-[0.95fr_1.05fr]"
-                  }`}
-                >
-                  <div
-                    className={`flex flex-col ${
-                      mediaLeft ? "lg:order-2" : "lg:order-1"
-                    }`}
-                  >
-                    <div
-                      data-reveal="1"
-                      className="mb-5 flex items-center gap-3 font-mono text-[12px] tracking-[0.08em] text-smoke uppercase"
-                    >
-                      <span>{s.num}</span>
-                      <span className="h-px w-8 bg-line" />
-                      <span>Capability</span>
-                    </div>
-
-                    <h2
-                      data-reveal="1"
-                      className="m-0 text-[clamp(30px,3.4vw,48px)] font-semibold leading-[1.08] tracking-[-0.028em]"
-                    >
-                      {s.title}
-                    </h2>
-                    <p
-                      data-reveal="1"
-                      className="mt-6 mb-0 max-w-[480px] text-base leading-[1.7] text-[rgba(22,21,15,0.6)]"
-                    >
-                      {s.body}
-                    </p>
-
-                    <div
-                      data-reveal="1"
-                      className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2"
-                    >
-                      {s.items.map((item) => (
-                        <div
-                          key={item}
-                          className="flex items-start gap-3 rounded-[14px] px-4 py-4"
-                          style={{ background: panelBg }}
-                        >
-                          <span className="mt-1.5 h-[6px] w-[6px] shrink-0 bg-ember" />
-                          <span className="text-[14.5px] leading-[1.5]">
-                            {item}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div
-                    data-reveal="1"
-                    data-media-frame="1"
-                    className={`relative h-[320px] overflow-hidden rounded-[20px] sm:h-[400px] lg:h-[460px] ${
-                      mediaLeft ? "lg:order-1" : "lg:order-2"
-                    }`}
-                    style={{ background: panelBg }}
-                  >
-                    <ImageSlot id={s.imgId} label={s.imgHint} />
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="page-x py-16 sm:py-24 md:py-32">
-        <WorkPhases eyebrow="How we work" />
-        <div className="mx-auto mt-12 max-w-site sm:mt-14">
-          <Link
-            data-reveal="1"
-            href="/contact"
-            className="button-dark inline-flex items-center gap-3 rounded-full px-8 py-4 text-[15px] font-medium"
-          >
-            Start a conversation{" "}
-            <span
-              data-btn-arrow="1"
-              className="inline-block text-base leading-none transition-transform duration-[240ms] ease-out"
+        <nav
+          aria-label="Services on this page"
+          className="up d4 mt-10 flex flex-wrap gap-2 border-t border-hair pt-6"
+        >
+          {services.map((service) => (
+            <a
+              key={service.id}
+              href={`#${service.id}`}
+              className="out group inline-flex min-h-11 items-center gap-2 rounded-full border border-hair px-4 text-[14px] text-night! hover:bg-night hover:text-white!"
             >
-              →
-            </span>
-          </Link>
-        </div>
+              <span className="font-mono text-[11px] text-dim group-hover:text-on-night-dim">{service.num}</span>
+              {service.short}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      {/* ============ SERVICES ============ */}
+      <section className="wrap pt-[clamp(64px,8vw,96px)]">
+        {services.map((service, i) => (
+          <article
+            key={service.id}
+            id={service.id}
+            className={`flex scroll-mt-28 flex-wrap items-center gap-[clamp(32px,5vw,72px)] border-t border-hair py-[clamp(48px,6vw,72px)] ${
+              i % 2 === 1 ? "flex-row-reverse" : ""
+            }`}
+          >
+            <div className="flex min-w-0 flex-[1_1_440px] flex-col gap-[18px]">
+              <span className="font-mono text-[13px] text-dim">
+                {service.num} / {String(services.length).padStart(2, "0")}
+              </span>
+              <h2 className="m-0 text-[clamp(30px,3.6vw,48px)] leading-none font-semibold tracking-[-0.04em] uppercase">
+                {service.title} <Serif>{service.accent}</Serif>
+              </h2>
+              <p className="m-0 max-w-[520px] text-[17px] leading-relaxed text-body">{service.body}</p>
+              <ul className="m-0 mt-2 grid list-none grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-x-6 p-0">
+                {service.items.map((item) => (
+                  <li key={item} className="flex items-center gap-3 border-t border-hair py-[13px] text-[15px]">
+                    <GradDot size={6} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <ServiceVisual kind={service.visual} />
+          </article>
+        ))}
       </section>
+
+      {/* ============ HOW WE WORK ============ */}
+      <div className="mt-[clamp(64px,8vw,96px)]">
+        <ProcessTimeline />
+      </div>
+
+      {/* ============ PROOF ============ */}
+      <section className="wrap pt-[clamp(96px,11vw,140px)]">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] border-t border-hair">
+          {proof.map((item) => (
+            <div key={item.label} className="flex flex-col gap-1.5 pt-7 pr-6">
+              <span className="text-[clamp(44px,5vw,72px)] leading-none font-semibold tracking-[-0.05em]">{item.value}</span>
+              <span className="text-[14px] text-dim">{item.label}</span>
+            </div>
+          ))}
+        </div>
+        <figure className="mt-12 mb-0 flex flex-wrap items-end justify-between gap-8 rounded-[32px] border border-hair p-[clamp(32px,5vw,64px)]">
+          <blockquote className="m-0 min-w-0 flex-[999_1_560px] text-[clamp(22px,2.4vw,32px)] leading-[1.35] font-medium tracking-[-0.02em]">
+            <span className="serif-accent text-accent-ink">“</span>
+            They developed a great platform for us, made sure it’s SEO optimised, tuned it for AI search engines, and set up our
+            Google Business Profile.
+            <span className="serif-accent text-accent-ink">”</span>
+          </blockquote>
+          <figcaption className="flex flex-[1_1_220px] flex-col gap-1 text-[15px]">
+            <strong className="font-semibold">Kiril Veretin</strong>
+            <span className="text-dim">CEO, Exploitless &amp; Vertin Recruitment</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <div className="pt-[clamp(80px,10vw,128px)]">
+        <CtaBand
+          title={
+            <>
+              Not sure where <Serif>you fit?</Serif>
+            </>
+          }
+          body="Tell us the problem. We’ll tell you honestly what we’d build, and what we wouldn’t. We reply within two working days."
+        />
+      </div>
     </>
   );
 }

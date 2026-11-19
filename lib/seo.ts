@@ -38,7 +38,7 @@ export function createPageMetadata({
   const url = absoluteUrl(path);
   const documentTitle = title
     ? `${siteConfig.name} · ${title}`
-    : `${siteConfig.name} — Software your company can stand on`;
+    : `${siteConfig.name} — We build products like they're our own`;
 
   return {
     title: {

@@ -13,6 +13,9 @@ function r2Hostname() {
 const remoteHost = r2Hostname();
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [{ source: "/about", destination: "/", permanent: true }];
+  },
   images: {
     remotePatterns: remoteHost
       ? [

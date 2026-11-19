@@ -1,10 +1,9 @@
 export const siteConfig = {
   name: "Levantate Labs",
   shortName: "Levantate",
-  tagline:
-    "Engineering studio. Web platforms, AI systems, blockchain — built end to end.",
+  tagline: "Product studio. We build products like they're our own.",
   description:
-    "Levantate Labs designs and builds web platforms, AI systems and enterprise software — end to end, as one accountable team.",
+    "Levantate Labs is a product studio. We take products from first idea to running in production for our clients, and we build and run our own: Maestro and Cronpay.",
   email: "contact@levantate.in",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://levantate.in",
   locale: "en_US",
@@ -31,9 +30,10 @@ export const siteConfig = {
 } as const;
 
 export const navLinks = [
-  { label: "Services", href: "/services" },
   { label: "Products", href: "/products" },
-  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Client work", href: "/work" },
+  { label: "How we work", href: "/#process" },
   { label: "Insights", href: "/insights" },
 ] as const;
 
@@ -49,7 +49,7 @@ export const siteRoutes = [
     path: "/services",
     title: "Services",
     description:
-      "AI & machine learning, web & product engineering, enterprise software, blockchain and AI for SaaS — built end to end by one team.",
+      "Product strategy and design, web and product engineering, AI and machine learning, AI for SaaS, enterprise software and blockchain, built end to end by one team.",
     changeFrequency: "monthly" as const,
     priority: 0.9,
   },
@@ -57,17 +57,17 @@ export const siteRoutes = [
     path: "/products",
     title: "Products",
     description:
-      "Maestro is live. Elevox — our Call AI — is in development. One more stays stealth — the same discipline we sell, applied to our own bets.",
+      "Our own products, built and run by us: Maestro and its Simulation Lab, Cronpay, Elevox in development, and one more in stealth.",
     changeFrequency: "monthly" as const,
     priority: 0.8,
   },
   {
-    path: "/about",
-    title: "About",
+    path: "/work",
+    title: "Client work",
     description:
-      "A studio run by engineers, not account managers. Small team, senior hands only — from first architecture diagram to production.",
+      "Products, platforms and sites we have built with our clients, from an enterprise AI interview platform to brand sites for security, recruitment and film studios.",
     changeFrequency: "monthly" as const,
-    priority: 0.7,
+    priority: 0.8,
   },
   {
     path: "/insights",

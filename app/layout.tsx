@@ -1,32 +1,38 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, IBM_Plex_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteNav } from "@/components/layout/SiteNav";
-import { SiteMotion } from "@/components/motion/SiteMotion";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/data/site";
 import { absoluteUrl } from "@/lib/seo";
 import "./globals.css";
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["400", "500"],
   display: "swap",
 });
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["italic"],
+  display: "swap",
+});
+
+const defaultTitle = `${siteConfig.name} — We build products like they're our own`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Software your company can stand on`,
+    default: defaultTitle,
     template: `${siteConfig.name} · %s`,
   },
   description: siteConfig.description,
@@ -50,20 +56,20 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: absoluteUrl("/"),
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — Software your company can stand on`,
+    title: defaultTitle,
     description: siteConfig.description,
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} — Software your company can stand on`,
+        alt: defaultTitle,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Software your company can stand on`,
+    title: defaultTitle,
     description: siteConfig.description,
     images: ["/twitter-image"],
   },
@@ -86,7 +92,7 @@ export const metadata: Metadata = {
       }
     : {}),
   other: {
-    "msapplication-TileColor": "#16150F",
+    "msapplication-TileColor": "#0A0A0A",
   },
   icons: {
     icon: [{ url: "/brand/logo-dark.svg", type: "image/svg+xml" }],
@@ -98,8 +104,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F7F5F0" },
-    { media: "(prefers-color-scheme: dark)", color: "#16150F" },
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0A0A" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -113,23 +119,21 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${archivo.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-bone font-sans text-ink">
+      <body className="min-h-full bg-white font-sans text-night">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:text-bone"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:rounded-full focus:bg-night focus:px-5 focus:py-3 focus:text-sm focus:text-white"
         >
           Skip to content
         </a>
         <JsonLd />
         <SiteNav />
-        <SiteMotion>
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
-        </SiteMotion>
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <SiteFooter />
       </body>
     </html>
   );

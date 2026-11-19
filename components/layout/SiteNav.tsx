@@ -1,135 +1,135 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { navLinks, siteConfig } from "@/lib/data/site";
+import { Mark } from "@/components/site/Mark";
+import { ArrowIcon, GradDot } from "@/components/site/ui";
+import { navLinks } from "@/lib/data/site";
+
+function isActive(pathname: string, href: string) {
+  if (href.includes("#")) return false;
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export function SiteNav() {
   const pathname = usePathname();
-  const isContact = pathname === "/contact";
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
     };
-  }, [open]);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   if (pathname.startsWith("/admin")) return null;
 
   const close = () => setOpen(false);
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-[100] border-b border-line-soft bg-[rgba(255,255,255,0.9)] text-ink backdrop-blur-[14px]">
-      <div className="mx-auto flex max-w-site items-center justify-between px-5 py-4 sm:px-8 sm:py-[22px] md:px-10">
+    <header className="wrap sticky top-0 z-[100] pt-4 sm:pt-6">
+      <nav
+        aria-label="Main"
+        className="flex items-center justify-between gap-4 rounded-full border border-hair bg-white/90 py-2 pr-2 pl-[22px] shadow-[0_10px_30px_rgba(10,10,10,0.05)] backdrop-blur-[14px]"
+      >
         <Link
           href="/"
           onClick={close}
-          className="flex items-center gap-[11px] text-ink transition-colors hover:text-ink"
+          aria-label="Levantate Labs home"
+          className="flex items-center gap-3 text-night!"
         >
-          <Image
-            src="/brand/logo-dark.svg"
-            alt="Levantate Labs"
-            width={22}
-            height={22}
-            className="block"
-            priority
-          />
-          <span className="text-[15px] font-semibold tracking-[-0.015em] sm:text-[16px]">
-            {siteConfig.name}
+          <Mark className="h-7 w-[26px]" />
+          <span className="flex flex-col leading-none">
+            <span className="text-[16px] font-bold tracking-[-0.02em]">LEVANTATE</span>
+            <span className="mt-1 text-[9px] font-semibold tracking-[0.42em] text-accent-ink">LABS</span>
           </span>
         </Link>
 
-        <nav className="rhide flex gap-[34px] text-[14.5px] font-medium">
+        <div className="flex items-center gap-[30px] text-[14px] font-medium whitespace-nowrap max-[1080px]:hidden">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const active = isActive(pathname, link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={
-                  isActive
-                    ? "font-medium text-ink"
-                    : "text-[rgba(22,21,15,0.65)] transition-colors hover:text-ink"
-                }
+                aria-current={active ? "page" : undefined}
+                className={`inline-flex items-center gap-2 text-night! ${active ? "font-semibold" : ""}`}
               >
+                {active ? <GradDot size={6} /> : null}
                 {link.label}
               </Link>
             );
           })}
-        </nav>
+        </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 max-[1080px]:ml-auto">
           <Link
             href="/contact"
-            data-magnetic={isContact || open ? undefined : "1"}
-            className={
-              isContact
-                ? "button-dark hidden items-center gap-[9px] rounded-full border border-ink px-[22px] py-[10px] text-[14.5px] font-medium hover:border-ember sm:inline-flex"
-                : "button-outline-dark hidden items-center gap-[9px] rounded-full border border-[rgba(22,21,15,0.25)] px-[22px] py-[10px] text-[14.5px] font-medium sm:inline-flex"
-            }
+            onClick={close}
+            aria-label="Start a project"
+            className="go inline-flex min-h-[46px] items-center gap-3 rounded-full bg-night py-[5px] pr-[5px] pl-5 text-[14px] font-medium whitespace-nowrap text-white! max-[520px]:p-[5px]"
           >
-            Contact
-            <span className="text-[15px] leading-none">→</span>
+            <span className="max-[520px]:hidden">Start a project</span>
+            <span className="arr bg-grad inline-flex h-9 w-9 items-center justify-center rounded-full">
+              <ArrowIcon />
+            </span>
           </Link>
-
           <button
             type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(22,21,15,0.2)] text-ink md:hidden"
             onClick={() => setOpen((v) => !v)}
+            aria-label="Menu"
+            aria-expanded={open}
+            aria-controls="site-menu"
+            className="hidden h-[46px] w-[46px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-hair bg-white p-0 max-[1080px]:inline-flex"
           >
-            <span className="sr-only">Menu</span>
-            <span className="relative block h-3.5 w-4">
-              <span
-                className={`absolute left-0 block h-px w-full bg-ink transition-transform duration-200 ${
-                  open ? "top-1.5 rotate-45" : "top-0.5"
-                }`}
-              />
-              <span
-                className={`absolute top-1.5 left-0 block h-px w-full bg-ink transition-opacity duration-200 ${
-                  open ? "opacity-0" : "opacity-100"
-                }`}
-              />
-              <span
-                className={`absolute left-0 block h-px w-full bg-ink transition-transform duration-200 ${
-                  open ? "top-1.5 -rotate-45" : "top-2.5"
-                }`}
-              />
-            </span>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              {open ? (
+                <path d="M4.5 4.5L13.5 13.5M13.5 4.5L4.5 13.5" stroke="#0A0A0A" strokeWidth="1.8" strokeLinecap="round" />
+              ) : (
+                <path d="M3 6.5H15M3 11.5H15" stroke="#0A0A0A" strokeWidth="1.8" strokeLinecap="round" />
+              )}
+            </svg>
           </button>
         </div>
-      </div>
+      </nav>
 
       {open ? (
-        <div className="border-t border-line-soft bg-white px-5 py-8 md:hidden">
-          <nav className="flex flex-col gap-5 text-[18px] font-medium">
-            {navLinks.map((link) => (
+        <div
+          id="site-menu"
+          className="mt-2 flex flex-col rounded-[28px] border border-hair bg-white p-2 shadow-[0_20px_40px_rgba(10,10,10,0.08)] min-[1081px]:hidden"
+        >
+          {navLinks.map((link, i) => {
+            const active = isActive(pathname, link.href);
+            return (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={close}
-                className={
-                  pathname === link.href
-                    ? "text-ink"
-                    : "text-[rgba(22,21,15,0.65)]"
-                }
+                aria-current={active ? "page" : undefined}
+                className={`menulink flex min-h-[52px] items-center justify-between rounded-[20px] px-[18px] text-[17px] font-medium text-night! ${
+                  active ? "bg-paper" : ""
+                }`}
               >
-                {link.label}
+                <span className="inline-flex items-center gap-2.5">
+                  {active ? <GradDot size={6} /> : null}
+                  {link.label}
+                </span>
+                <span className="font-mono text-[11px] text-dim">{String(i + 1).padStart(2, "0")}</span>
               </Link>
-            ))}
-            <Link
-              href="/contact"
-              onClick={close}
-              className="button-dark mt-2 inline-flex w-fit items-center gap-2 rounded-full px-6 py-3 text-[15px] font-medium"
-            >
-              Contact <span>→</span>
-            </Link>
-          </nav>
+            );
+          })}
+          <Link
+            href="/contact"
+            onClick={close}
+            className="go mt-1.5 flex min-h-[56px] items-center justify-between rounded-full bg-night py-[5px] pr-[5px] pl-5 text-[16px] font-medium text-white!"
+          >
+            Start a project
+            <span className="arr bg-grad inline-flex h-11 w-11 items-center justify-center rounded-full">
+              <ArrowIcon />
+            </span>
+          </Link>
         </div>
       ) : null}
     </header>

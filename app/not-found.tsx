@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { ArrowLink, Eyebrow, Serif } from "@/components/site/ui";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -11,26 +11,17 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function NotFound() {
   return (
-    <section className="page-x flex min-h-[70vh] flex-col justify-center py-32">
-      <div className="mx-auto max-w-site">
-        <p className="mb-5 font-mono text-[12px] tracking-[0.08em] text-smoke uppercase">
-          404
-        </p>
-        <h1 className="m-0 text-[clamp(40px,6vw,72px)] font-semibold leading-[1.05] tracking-[-0.035em]">
-          This page isn&apos;t here
-          <span className="text-ember">.</span>
-        </h1>
-        <p className="mt-6 max-w-[420px] text-[16px] leading-[1.65] text-[rgba(22,21,15,0.6)]">
-          The link may be broken, or the page may have moved. Head home and
-          start again.
-        </p>
-        <Link
-          href="/"
-          className="button-dark mt-10 inline-flex items-center gap-3 rounded-full px-7 py-4 text-[15px] font-medium"
-        >
-          Back home →
-        </Link>
-      </div>
+    <section className="wrap flex min-h-[70vh] flex-col justify-center py-32">
+      <Eyebrow className="self-start">404</Eyebrow>
+      <h1 className="mt-6 mb-0 text-[clamp(40px,6vw,80px)] leading-[0.95] font-semibold tracking-[-0.05em] uppercase">
+        This page <Serif>isn&apos;t here.</Serif>
+      </h1>
+      <p className="mt-6 mb-0 max-w-[440px] text-[17px] leading-relaxed text-body">
+        The link may be broken, or the page may have moved. Head home and start again.
+      </p>
+      <ArrowLink href="/" className="mt-10 self-start">
+        Back home
+      </ArrowLink>
     </section>
   );
 }
