@@ -1,16 +1,13 @@
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { checkLoginRateLimit, clientIpFromHeaders } from "@/lib/auth/admin";
 import { getDb } from "@/lib/db";
 import { contactMessages } from "@/lib/db/schema";
 import { contactNeeds } from "@/lib/data/contact";
-import {
-  contactAutoReplyEmailHtml,
-  contactAutoReplyEmailText,
-  contactNotifyEmailHtml,
-  sendEmail,
-} from "@/lib/mail/ses";
-import { siteConfig } from "@/lib/data/site";
+import { getCalendlyUrl } from "@/lib/data/settings";
+import { sendEmail, teamInbox } from "@/lib/mail/send";
+import { enquiryAlertEmail, enquiryAutoReplyEmail } from "@/lib/mail/templates";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1).max(120),
@@ -21,11 +18,27 @@ const contactSchema = z.object({
 });
 
 export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const data = contactSchema.parse(body);
-    const db = getDb();
+  const ip = clientIpFromHeaders(request.headers);
+  const rate = checkLoginRateLimit(`contact:${ip}`, 5, 10 * 60 * 1000);
+  if (!rate.ok) {
+    return NextResponse.json(
+      { error: "Too many messages from this connection. Try again in a few minutes, or email us directly." },
+      { status: 429 },
+    );
+  }
 
+  try {
+    const data = contactSchema.parse(await request.json());
+
+    if (!process.env.DATABASE_URL) {
+      console.error("Contact form: DATABASE_URL is not set, enquiry not saved");
+      return NextResponse.json(
+        { error: "The form isn't connected yet. Please email us at the address on this page." },
+        { status: 503 },
+      );
+    }
+
+    const db = getDb();
     const [row] = await db
       .insert(contactMessages)
       .values({
@@ -37,59 +50,38 @@ export async function POST(request: Request) {
       })
       .returning();
 
-    const first =
-      data.name.trim().split(/\s+/).filter(Boolean)[0] || "there";
+    const calendlyUrl = await getCalendlyUrl();
 
-    const mailJobs: Promise<void>[] = [
+    // The enquiry is saved either way; email problems are logged, not shown to the visitor.
+    const [alert, autoReply] = await Promise.allSettled([
       sendEmail({
-        to: siteConfig.email,
+        to: teamInbox(),
         replyTo: data.email,
-        subject: `New enquiry from ${data.name}`,
-        html: contactNotifyEmailHtml({
-          name: data.name,
-          email: data.email,
-          company: data.company,
-          needs: data.needs,
-          message: data.message,
-        }),
+        ...enquiryAlertEmail({ ...row, needs: data.needs }),
       }),
       sendEmail({
         to: data.email,
-        replyTo: siteConfig.email,
-        subject: `Thanks, ${first} — we got your note`,
-        html: contactAutoReplyEmailHtml({ name: data.name }),
-        text: contactAutoReplyEmailText({ name: data.name }),
+        replyTo: teamInbox(),
+        ...enquiryAutoReplyEmail({ name: data.name, message: data.message, calendlyUrl }),
       }),
-    ];
+    ]);
 
-    const results = await Promise.allSettled(mailJobs);
-    const teamMailOk = results[0]?.status === "fulfilled";
+    if (alert.status === "rejected") console.error("Enquiry alert email failed", alert.reason);
+    if (autoReply.status === "rejected") console.error("Enquiry auto-reply email failed", autoReply.reason);
 
-    for (const [index, result] of results.entries()) {
-      if (result.status === "rejected") {
-        console.error(
-          index === 0 ? "Contact team notify failed" : "Contact auto-reply failed",
-          result.reason,
-        );
-      }
-    }
-
-    if (teamMailOk) {
-      await db
-        .update(contactMessages)
-        .set({ emailedAt: new Date() })
-        .where(eq(contactMessages.id, row.id));
+    if (alert.status === "fulfilled") {
+      await db.update(contactMessages).set({ emailedAt: new Date() }).where(eq(contactMessages.id, row.id));
     }
 
     return NextResponse.json({ ok: true });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: "Invalid form data", details: error.flatten() },
-        { status: 400 },
-      );
+      return NextResponse.json({ error: "Please check the form and try again." }, { status: 400 });
     }
-    console.error(error);
-    return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+    console.error("Contact form failed", error);
+    return NextResponse.json(
+      { error: "Something went wrong on our side. Please try again, or email us directly." },
+      { status: 500 },
+    );
   }
 }

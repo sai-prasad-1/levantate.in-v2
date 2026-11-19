@@ -1,6 +1,15 @@
-import { desc, eq } from "drizzle-orm";
+import { asc, desc, eq } from "drizzle-orm";
 import { getDb } from "@/lib/db";
-import { contactMessages, tasks } from "@/lib/db/schema";
+import { contactMessages, contactReplies, tasks } from "@/lib/db/schema";
+
+export async function getContactReplies(contactId: string) {
+  const db = getDb();
+  return db
+    .select()
+    .from(contactReplies)
+    .where(eq(contactReplies.contactMessageId, contactId))
+    .orderBy(asc(contactReplies.sentAt));
+}
 
 export async function getContactMessages() {
   const db = getDb();

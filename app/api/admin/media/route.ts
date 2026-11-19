@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { getDb } from "@/lib/db";
 import { media } from "@/lib/db/schema";
-import { MAX_UPLOAD_BYTES, uploadImageToR2 } from "@/lib/storage/r2";
+import { MAX_UPLOAD_BYTES, uploadImage } from "@/lib/storage/blob";
 
 export async function POST(request: Request) {
   const session = await auth();
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const uploaded = await uploadImageToR2({
+    const uploaded = await uploadImage({
       buffer,
       mime: file.type,
       filename: file.name,

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContactDetailPanel } from "@/components/admin/ContactDetailPanel";
-import { getContactMessageById } from "@/lib/data/admin-queries";
+import { ReplyComposer } from "@/components/admin/ReplyComposer";
+import { getContactMessageById, getContactReplies } from "@/lib/data/admin-queries";
+import { getCalendlyUrl } from "@/lib/data/settings";
+import { isEmailConfigured } from "@/lib/mail/send";
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -16,6 +19,8 @@ export default async function AdminContactDetailPage({ params }: PageProps) {
   const { id } = await params;
   const contact = await getContactMessageById(id);
   if (!contact) notFound();
+
+  const [replies, bookingUrl] = await Promise.all([getContactReplies(contact.id), getCalendlyUrl()]);
 
   return (
     <div>
@@ -35,6 +40,21 @@ export default async function AdminContactDetailPage({ params }: PageProps) {
           createdAt: contact.createdAt.toISOString(),
           emailedAt: contact.emailedAt?.toISOString() ?? null,
         }}
+      />
+      <ReplyComposer
+        contactId={contact.id}
+        name={contact.name}
+        email={contact.email}
+        needs={contact.needs ?? []}
+        bookingUrl={bookingUrl || null}
+        emailReady={isEmailConfigured()}
+        replies={replies.map((r) => ({
+          id: r.id,
+          subject: r.subject,
+          body: r.body,
+          sentAt: r.sentAt.toISOString(),
+          sentByEmail: r.sentByEmail,
+        }))}
       />
     </div>
   );

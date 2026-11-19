@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsx scripts/migrate.ts && next build",
+    "db:deploy": "tsx scripts/migrate.ts",
     "start": "next start",
     "lint": "eslint",
     "db:generate": "drizzle-kit generate",
@@ -15,8 +16,6 @@
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.11.3",
-    "@aws-sdk/client-s3": "^3.1101.0",
-    "@aws-sdk/client-ses": "^3.1101.0",
     "@neondatabase/serverless": "^1.1.0",
     "@tiptap/extension-image": "^3.29.2",
     "@tiptap/extension-link": "^3.29.2",
@@ -25,12 +24,14 @@
     "@tiptap/pm": "^3.29.2",
     "@tiptap/react": "^3.29.2",
     "@tiptap/starter-kit": "^3.29.2",
+    "@vercel/blob": "^2.9.0",
     "drizzle-orm": "^0.45.2",
     "nanoid": "^6.0.0",
     "next": "16.2.10",
     "next-auth": "^5.0.0-beta.32",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "resend": "^6.39.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

@@ -90,25 +90,27 @@ export async function getFeaturedInsight() {
   return posts.find((p) => p.featured) ?? posts[0] ?? null;
 }
 
+function staticBySlug(slug: string): PublicInsight | null {
+  const post = getStaticBySlug(slug);
+  if (!post) return null;
+  return {
+    id: post.slug,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    content: `<p>${post.excerpt}</p>`,
+    coverImageUrl: null,
+    tag: post.tag,
+    featured: post.slug === featuredPost.slug,
+    publishedAt: post.publishedAt,
+    date: post.date,
+  };
+}
+
 export async function getInsightBySlug(slug: string) {
   return unstable_cache(
     async () => {
-      if (!process.env.DATABASE_URL) {
-        const post = getStaticBySlug(slug);
-        if (!post) return null;
-        return {
-          id: post.slug,
-          slug: post.slug,
-          title: post.title,
-          excerpt: post.excerpt,
-          content: `<p>${post.excerpt}</p>`,
-          coverImageUrl: null,
-          tag: post.tag,
-          featured: post.slug === featuredPost.slug,
-          publishedAt: post.publishedAt,
-          date: post.date,
-        } satisfies PublicInsight;
-      }
+      if (!process.env.DATABASE_URL) return staticBySlug(slug);
 
       try {
         const { getDb } = await import("@/lib/db");
@@ -120,24 +122,13 @@ export async function getInsightBySlug(slug: string) {
           .where(eq(insights.slug, slug))
           .limit(1);
         const row = rows[0];
-        if (!row || row.status !== "published") return null;
-        return toPublic(row);
+        // A post that exists in the database but isn't published stays hidden.
+        if (row) return row.status === "published" ? toPublic(row) : null;
+        // Not in the database yet: keep the built-in posts reachable.
+        return staticBySlug(slug);
       } catch (error) {
         console.error("Failed to load insight", error);
-        const post = getStaticBySlug(slug);
-        if (!post) return null;
-        return {
-          id: post.slug,
-          slug: post.slug,
-          title: post.title,
-          excerpt: post.excerpt,
-          content: `<p>${post.excerpt}</p>`,
-          coverImageUrl: null,
-          tag: post.tag,
-          featured: post.slug === featuredPost.slug,
-          publishedAt: post.publishedAt,
-          date: post.date,
-        } satisfies PublicInsight;
+        return staticBySlug(slug);
       }
     },
     [`insight-${slug}`],

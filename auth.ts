@@ -9,7 +9,8 @@ import {
   verificationTokens,
 } from "@/lib/db/schema";
 import { checkLoginRateLimit, isAdminEmail } from "@/lib/auth/admin";
-import { magicLinkEmailHtml, sendEmail } from "@/lib/mail/ses";
+import { sendEmail } from "@/lib/mail/send";
+import { magicLinkEmail } from "@/lib/mail/templates";
 
 const emailProvider: Provider = {
   id: "email",
@@ -31,12 +32,7 @@ const emailProvider: Provider = {
       return;
     }
 
-    await sendEmail({
-      to: email,
-      subject: "Sign in to Levantate Labs admin",
-      html: magicLinkEmailHtml(url),
-      text: `Sign in to Levantate Labs admin: ${url}`,
-    });
+    await sendEmail({ to: email, ...magicLinkEmail(url) });
   },
 };
 

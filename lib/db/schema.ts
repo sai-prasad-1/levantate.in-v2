@@ -128,6 +128,22 @@ export const contactMessages = pgTable("contact_messages", {
   updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
 });
 
+/** Replies sent to an enquiry from the admin, kept as a history on the enquiry. */
+export const contactReplies = pgTable("contact_replies", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  contactMessageId: text("contact_message_id")
+    .notNull()
+    .references(() => contactMessages.id, { onDelete: "cascade" }),
+  subject: text("subject").notNull(),
+  body: text("body").notNull(),
+  template: text("template"),
+  sentByEmail: text("sent_by_email"),
+  providerMessageId: text("provider_message_id"),
+  sentAt: timestamp("sent_at", { mode: "date" }).defaultNow().notNull(),
+});
+
 export const siteSettings = pgTable("site_settings", {
   key: text("key").primaryKey(),
   value: text("value").notNull().default(""),
@@ -155,5 +171,6 @@ export type Insight = typeof insights.$inferSelect;
 export type NewInsight = typeof insights.$inferInsert;
 export type Media = typeof media.$inferSelect;
 export type ContactMessage = typeof contactMessages.$inferSelect;
+export type ContactReply = typeof contactReplies.$inferSelect;
 export type SiteSetting = typeof siteSettings.$inferSelect;
 export type Task = typeof tasks.$inferSelect;
