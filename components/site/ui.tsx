@@ -7,7 +7,7 @@ export function ArrowIcon({ size = 14 }: { size?: number }) {
     <svg width={size} height={size} viewBox="0 0 14 14" fill="none" aria-hidden="true">
       <path
         d="M4 10L10 4M10 4H5M10 4V9"
-        stroke="#0A0A0A"
+        style={{ stroke: "var(--on-accent)" }}
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -21,7 +21,7 @@ export function CheckIcon({ size = 12 }: { size?: number }) {
     <svg width={size} height={size} viewBox="0 0 12 12" fill="none" aria-hidden="true">
       <path
         d="M2.5 6.2L5 8.5L9.5 3.5"
-        stroke="#0A0A0A"
+        style={{ stroke: "var(--on-accent)" }}
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"

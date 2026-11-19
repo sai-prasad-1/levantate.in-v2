@@ -29,7 +29,7 @@ function Strategy() {
           <span className="bg-grad h-[95%] flex-1 rounded-[3px]" />
         </span>
       </div>
-      <div className="float bg-grad absolute top-6 right-6 box-border w-[140px] rounded-[10px] px-3.5 py-3 text-[12px] leading-[1.35] font-semibold text-night shadow-[0_12px_30px_rgba(0,0,0,0.4)] max-[820px]:hidden">
+      <div className="float bg-grad absolute top-6 right-6 box-border w-[140px] rounded-[10px] px-3.5 py-3 text-[12px] leading-[1.35] font-semibold text-on-accent shadow-[0_12px_30px_rgba(0,0,0,0.4)] max-[820px]:hidden">
         Who is this for? What does “done” look like?
       </div>
     </div>
@@ -171,7 +171,7 @@ function Blockchain() {
           <span className="h-[7px] rounded bg-night-edge" />
         </span>
         <span className="flex-[0_0_14px] border-t-2 border-dashed border-night" />
-        <span className={`${block} bg-grad text-night`}>
+        <span className={`${block} bg-grad text-on-accent`}>
           <span>#04</span>
           <span className="h-[7px] rounded bg-[rgba(10,10,10,0.25)]" />
         </span>

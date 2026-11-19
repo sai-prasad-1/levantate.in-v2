@@ -111,7 +111,7 @@ function emailShell({
             <td style="padding:28px 32px 20px;border-bottom:1px solid rgba(22,21,15,0.08);">
               <table role="presentation" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="width:10px;height:10px;background:#C74A26;border-radius:2px;"></td>
+                  <td style="width:10px;height:10px;background:#1F2FD6;border-radius:2px;"></td>
                   <td style="padding-left:10px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;letter-spacing:-0.02em;color:#16150F;">
                     ${escapeHtml(siteConfig.name)}
                   </td>
@@ -127,7 +127,7 @@ function emailShell({
           <tr>
             <td style="padding:20px 32px 28px;border-top:1px solid rgba(22,21,15,0.08);font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.55;color:rgba(22,21,15,0.45);">
               ${escapeHtml(siteConfig.markline)} ·
-              <a href="${siteUrl()}" style="color:#C74A26;text-decoration:none;">${escapeHtml(siteUrl().replace(/^https?:\/\//, ""))}</a>
+              <a href="${siteUrl()}" style="color:#1F2FD6;text-decoration:none;">${escapeHtml(siteUrl().replace(/^https?:\/\//, ""))}</a>
               <br />
               ${escapeHtml(siteConfig.email)}
             </td>
@@ -179,7 +179,7 @@ export function contactNotifyEmailHtml(input: {
         <tr>
           <td style="padding:10px 0;border-bottom:1px solid rgba(22,21,15,0.08);color:rgba(22,21,15,0.5);">Email</td>
           <td style="padding:10px 0;border-bottom:1px solid rgba(22,21,15,0.08);">
-            <a href="mailto:${escapeHtml(input.email)}" style="color:#C74A26;text-decoration:none;">${escapeHtml(input.email)}</a>
+            <a href="mailto:${escapeHtml(input.email)}" style="color:#1F2FD6;text-decoration:none;">${escapeHtml(input.email)}</a>
           </td>
         </tr>
         <tr>
@@ -223,7 +223,7 @@ export function contactAutoReplyEmailHtml(input: { name: string }) {
       <tr>
         <td style="padding:0 0 14px;">
           <a href="${post.href}" style="display:block;text-decoration:none;border:1px solid rgba(22,21,15,0.1);border-radius:14px;padding:16px 18px;background:#F7F5F0;">
-            <div style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#C74A26;margin-bottom:6px;font-family:Arial,Helvetica,sans-serif;">${escapeHtml(post.tag)}</div>
+            <div style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#1F2FD6;margin-bottom:6px;font-family:Arial,Helvetica,sans-serif;">${escapeHtml(post.tag)}</div>
             <div style="font-family:Arial,Helvetica,sans-serif;font-size:15.5px;font-weight:700;letter-spacing:-0.02em;color:#16150F;margin-bottom:6px;">${escapeHtml(post.title)}</div>
             <div style="font-family:Arial,Helvetica,sans-serif;font-size:13.5px;line-height:1.55;color:rgba(22,21,15,0.6);">${escapeHtml(post.excerpt)}</div>
           </a>
@@ -237,7 +237,7 @@ export function contactAutoReplyEmailHtml(input: { name: string }) {
     preview: `Thanks ${name} — we got your note and will reply within two working days.`,
     body: `
       <h1 style="font-size:28px;line-height:1.2;letter-spacing:-0.03em;margin:0 0 14px;color:#16150F;">
-        Thanks, ${escapeHtml(name)}<span style="color:#C74A26;">.</span>
+        Thanks, ${escapeHtml(name)}<span style="color:#1F2FD6;">.</span>
       </h1>
       <p style="font-size:15.5px;line-height:1.7;color:rgba(22,21,15,0.68);margin:0 0 16px;">
         We received your note and a human on our team will read it. Expect a reply within
@@ -250,12 +250,12 @@ export function contactAutoReplyEmailHtml(input: { name: string }) {
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 28px;background:#16150F;border-radius:16px;">
         <tr>
           <td style="padding:22px 24px;">
-            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#C74A26;margin-bottom:10px;">Product</div>
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#1F2FD6;margin-bottom:10px;">Product</div>
             <div style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.03em;color:#F7F5F0;margin-bottom:10px;">Maestro</div>
             <p style="font-family:Arial,Helvetica,sans-serif;font-size:14.5px;line-height:1.65;color:rgba(247,245,240,0.68);margin:0 0 18px;">
               Our learning platform that teaches systems thinking — not just syntax — so people build software that actually scales.
             </p>
-            <a href="${productsUrl}" style="display:inline-block;background:#C74A26;color:#F7F5F0;text-decoration:none;padding:11px 18px;border-radius:999px;font-family:Arial,Helvetica,sans-serif;font-size:13.5px;font-weight:600;">
+            <a href="${productsUrl}" style="display:inline-block;background:#1F2FD6;color:#F7F5F0;text-decoration:none;padding:11px 18px;border-radius:999px;font-family:Arial,Helvetica,sans-serif;font-size:13.5px;font-weight:600;">
               Explore Maestro →
             </a>
           </td>
@@ -269,7 +269,7 @@ export function contactAutoReplyEmailHtml(input: { name: string }) {
         ${insightRows}
       </table>
       <p style="margin:8px 0 0;">
-        <a href="${insightsUrl}" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#C74A26;text-decoration:none;font-weight:600;">
+        <a href="${insightsUrl}" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#1F2FD6;text-decoration:none;font-weight:600;">
           Browse all insights →
         </a>
       </p>

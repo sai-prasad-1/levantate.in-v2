@@ -32,7 +32,7 @@ function StrategyArt() {
           <span className="bg-grad h-[95%] flex-1 rounded-[3px]" />
         </span>
       </div>
-      <div className="float bg-grad ml-auto w-[132px] rounded-[10px] px-3.5 py-3 text-[12px] leading-[1.35] font-semibold text-night shadow-[0_12px_30px_rgba(0,0,0,0.4)] max-[820px]:hidden">
+      <div className="float bg-grad ml-auto w-[132px] rounded-[10px] px-3.5 py-3 text-[12px] leading-[1.35] font-semibold text-on-accent shadow-[0_12px_30px_rgba(0,0,0,0.4)] max-[820px]:hidden">
         Who is this for? What does &ldquo;done&rdquo; look like?
       </div>
     </div>
@@ -152,7 +152,7 @@ function ChainArt() {
         <span className="h-1.5 rounded-[3px] bg-night-edge" />
       </span>
       <span className="flex-[0_0_12px] border-t-2 border-dashed border-night" />
-      <span className={`${block} bg-grad text-night`}>
+      <span className={`${block} bg-grad text-on-accent`}>
         #04
         <span className="h-1.5 rounded-[3px] bg-[rgba(10,10,10,0.25)]" />
       </span>

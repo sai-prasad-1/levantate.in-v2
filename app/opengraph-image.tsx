@@ -37,7 +37,7 @@ export default function OpenGraphImage() {
               width: 16,
               height: 16,
               borderRadius: 999,
-              background: "linear-gradient(121deg, #FF4D1F 0%, #FF7A1A 50%, #FFB547 100%)",
+              background: "linear-gradient(121deg, #1A2BFF 0%, #3D55FF 50%, #8A97FF 100%)",
             }}
           />
           LEVANTATE LABS
@@ -63,7 +63,7 @@ export default function OpenGraphImage() {
                 fontWeight: 400,
                 textTransform: "none",
                 letterSpacing: "-0.02em",
-                color: "#FF9149",
+                color: "#8C9BFF",
               }}
             >
               like they&apos;re our own.
@@ -84,7 +84,7 @@ export default function OpenGraphImage() {
           }}
         >
           <span>levantate.in</span>
-          <span style={{ color: "#FF9149" }}>Get up. Ship something.</span>
+          <span style={{ color: "#8C9BFF" }}>Get up. Ship something.</span>
         </div>
       </div>
     ),

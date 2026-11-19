@@ -29,17 +29,19 @@
   --dim: #5c5c5c;
   --on-night: #d4d4d4;
   --on-night-dim: #9a9a9a;
-  /* Daybreak accent */
-  --g0: #ff4d1f;
-  --g1: #ff7a1a;
-  --g2: #ffb547;
-  --s0: #ff4d1f;
-  --s1: #ff6b1f;
-  --s2: #ff902e;
-  --s3: #ffb547;
-  --accent-ink: #c2410c;
-  --accent-glow: #ff9149;
-  --glow-soft: rgba(255, 122, 26, 0.32);
+  /* Ultramarine accent */
+  --g0: #1a2bff;
+  --g1: #3d55ff;
+  --g2: #8a97ff;
+  --s0: #1a2bff;
+  --s1: #2a3fff;
+  --s2: #5468ff;
+  --s3: #8a97ff;
+  --accent-ink: #1f2fd6;
+  --accent-glow: #8c9bff;
+  --glow-soft: rgba(61, 85, 255, 0.34);
+  /* Icons and text that sit on the accent */
+  --on-accent: #ffffff;
   --grad: linear-gradient(121deg, var(--g0) 0%, var(--g1) 50%, var(--g2) 100%);
 }
 
@@ -78,6 +80,7 @@
   --color-s3: var(--s3);
   --color-accent-ink: var(--accent-ink);
   --color-accent-glow: var(--accent-glow);
+  --color-on-accent: var(--on-accent);
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-instrument-serif);

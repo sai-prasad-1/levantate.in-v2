@@ -12,7 +12,7 @@ function ErdCover() {
   return (
     <div aria-hidden="true" className="relative flex h-[240px] items-center justify-center overflow-hidden rounded-[28px] bg-night">
       <div className={table}>
-        <div className="bg-grad px-2 py-1.5 font-medium text-night">user</div>
+        <div className="bg-grad px-2 py-1.5 font-medium text-on-accent">user</div>
         <div className={row}>id</div>
         <div className={row}>email</div>
         <div className={row}>team_id</div>

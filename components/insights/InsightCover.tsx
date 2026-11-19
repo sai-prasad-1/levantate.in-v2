@@ -130,7 +130,7 @@ function ErdTable({
         : "w-[clamp(72px,7vw,92px)] text-[9px]";
   return (
     <div className={`${width} shrink-0 overflow-hidden rounded-xl border border-night-edge bg-night-card font-mono text-on-night-dim`}>
-      <div className={`px-2.5 py-2 font-medium ${lit ? "bg-grad text-night" : "bg-night-line text-white"}`}>{name}</div>
+      <div className={`px-2.5 py-2 font-medium ${lit ? "bg-grad text-on-accent" : "bg-night-line text-white"}`}>{name}</div>
       {rows.map((row) => (
         <div key={row} className="border-t border-night-line px-2.5 py-1.5">
           {row}
@@ -321,7 +321,7 @@ function BoardMotif() {
         <span className={dash} />
         <span className={node}>api</span>
         <span className={dash} />
-        <span className="bg-grad rounded-xl px-3 py-2.5 font-mono text-[11px] font-medium text-night">queue</span>
+        <span className="bg-grad rounded-xl px-3 py-2.5 font-mono text-[11px] font-medium text-on-accent">queue</span>
         <span className={dash} />
         <span className={node}>db</span>
       </div>
