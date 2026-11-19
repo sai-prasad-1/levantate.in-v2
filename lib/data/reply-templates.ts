@@ -1,4 +1,7 @@
+import { siteConfig } from "@/lib/data/site";
+
 /**
+ * Replies are sent from a no-reply address, so templates point people to the studio inbox.
  * Starting points for replying to an enquiry from the admin.
  * Placeholders: {firstName}, {booking} (Calendly link or a fallback line), {topic}.
  * Every template is editable before sending.
@@ -39,7 +42,7 @@ Thanks for reaching out. Before we suggest a next step, it would help to know a 
 3. When would you like a first version in people's hands?
 4. Is there a budget range you're working within?
 
-Short answers are fine. Just reply to this email.
+Short answers are fine. Send them to ${siteConfig.email}.
 
 Thanks,
 The Levantate Labs team`,
@@ -77,7 +80,7 @@ export function fillTemplate(
 ) {
   const booking = values.bookingUrl
     ? `You can pick a time that suits you here: ${values.bookingUrl}`
-    : "Reply with two or three times that work for you this week and we'll send an invite.";
+    : `Send two or three times that work for you this week to ${siteConfig.email} and we'll send an invite.`;
   return text
     .replaceAll("{firstName}", values.firstName)
     .replaceAll("{topic}", values.topic)

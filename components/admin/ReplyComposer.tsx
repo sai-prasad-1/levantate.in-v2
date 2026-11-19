@@ -70,7 +70,7 @@ export function ReplyComposer({ contactId, name, email, needs, bookingUrl, email
       <div className="rounded-[20px] border border-[rgba(22,21,15,0.1)] bg-white p-7 sm:p-8">
         <h2 className="m-0 text-[22px] font-semibold tracking-[-0.02em]">Reply to {values.firstName}</h2>
         <p className="mt-2 mb-0 text-[14px] text-smoke">
-          Sent from the studio address to {email}. Their reply comes back to the team inbox.
+          Sent to {email} from the no-reply address. The email asks them to write back to the studio inbox.
         </p>
 
         {!emailReady ? (
