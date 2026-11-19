@@ -61,7 +61,7 @@ export function Process() {
   return (
     <section id="process" className="bg-night text-white">
       <div className="wrap section-y">
-        <Eyebrow onNight>How we work</Eyebrow>
+        <Eyebrow index="04" onNight>How we work</Eyebrow>
         <div className="mt-[22px] flex flex-wrap items-end justify-between gap-6">
           <SectionTitle>
             Small releases, <Serif onNight>from week one.</Serif>

@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { ArrowIcon, CheckIcon, Eyebrow, GradDot, Serif } from "@/components/site/ui";
+import { ArrowIcon, CheckIcon, Eyebrow, GradDot, Serif, Status } from "@/components/site/ui";
 import { contactNeeds } from "@/lib/data/contact";
 import { siteConfig } from "@/lib/data/site";
 
@@ -98,10 +98,9 @@ export function ContactClient({ calendlyUrl }: { calendlyUrl?: string }) {
             We reply within two working days. The person on the first call stays on the project until launch, and
             after.
           </p>
-          <span className="up d5 inline-flex items-center gap-2.5 self-start rounded-full bg-paper px-4 py-2.5 text-[14px] font-medium">
-            <GradDot pulse />
+          <Status kind="live" className="up d5 text-[14px]">
             {siteConfig.slotsNote}
-          </span>
+          </Status>
           <div className="up d6 mt-3 flex flex-col border-t border-hair">
             <ContactRow label="Email" value={siteConfig.email} href={`mailto:${siteConfig.email}`} />
             {bookingUrl ? <ContactRow label="Call" value="Book a call" href={bookingUrl} external /> : null}

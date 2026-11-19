@@ -188,7 +188,7 @@ function Card({
 export function Services() {
   return (
     <section id="services" className="wrap section-y">
-      <Eyebrow>What we build</Eyebrow>
+      <Eyebrow index="03">What we build</Eyebrow>
       <div className="mt-[22px] flex flex-wrap items-end justify-between gap-6">
         <SectionTitle>
           One team, <Serif>start to finish.</Serif>

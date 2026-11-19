@@ -3,7 +3,7 @@ import Link from "next/link";
 import { InsightCover, TitleWithAccent } from "@/components/insights/InsightCover";
 import type { InsightCardData } from "@/components/insights/InsightCard";
 import { InsightFilter } from "@/components/insights/InsightFilter";
-import { ArrowIcon, CtaBand, Eyebrow, GradDot, Serif } from "@/components/site/ui";
+import { ArrowIcon, CtaBand, Eyebrow, Serif } from "@/components/site/ui";
 import { getFeaturedInsight, getPublishedInsights } from "@/lib/data/insights-db";
 import { siteConfig } from "@/lib/data/site";
 import { createPageMetadata } from "@/lib/seo";
@@ -93,8 +93,7 @@ export default async function InsightsPage() {
                 priority
                 className="absolute inset-0"
               />
-              <span className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full border border-night-edge bg-night/60 px-3 py-1.5 font-mono text-[11px] tracking-[0.06em] text-on-night uppercase">
-                <GradDot size={6} pulse />
+              <span className="absolute top-5 left-5 rounded-[10px] bg-white px-3 py-2 text-[13px] leading-none font-medium text-night">
                 Featured
               </span>
             </div>

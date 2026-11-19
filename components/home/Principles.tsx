@@ -40,7 +40,7 @@ export function Principles() {
         style={{ background: "radial-gradient(closest-side, var(--glow-soft), rgba(10,10,10,0))" }}
       />
       <div className="wrap section-y relative">
-        <Eyebrow onNight>How we think</Eyebrow>
+        <Eyebrow index="06" onNight>How we think</Eyebrow>
         <div className="mt-[22px] flex flex-wrap items-end justify-between gap-6">
           <SectionTitle>
             Three rules we <Serif onNight>don&rsquo;t bend.</Serif>

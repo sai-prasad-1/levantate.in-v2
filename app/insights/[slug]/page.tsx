@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { InsightCard } from "@/components/insights/InsightCard";
 import { InsightCover, TitleWithAccent } from "@/components/insights/InsightCover";
 import { Mark } from "@/components/site/Mark";
-import { CtaBand, GradDot, Serif } from "@/components/site/ui";
+import { CtaBand, Eyebrow, Serif } from "@/components/site/ui";
 import {
   getInsightBySlug,
   getPublishedInsights,
@@ -149,11 +149,8 @@ export default async function InsightArticlePage({ params }: InsightPageProps) {
         >
           <span aria-hidden="true">←</span>All insights
         </Link>
-        <div className="up d2 mt-[clamp(32px,4vw,48px)] flex flex-wrap items-center gap-x-4 gap-y-2.5 font-mono text-[12px] text-dim uppercase">
-          <span className="inline-flex items-center gap-2 rounded-full border border-hair px-3 py-1.5 text-night">
-            <GradDot size={6} />
-            {post.tag}
-          </span>
+        <div className="up d2 mt-[clamp(32px,4vw,48px)] flex flex-wrap items-center gap-x-3 gap-y-2.5 text-[14px] text-dim">
+          <Eyebrow className="text-night!">{post.tag}</Eyebrow>
           {post.date ? <time dateTime={post.publishedAt ?? undefined}>{post.date}</time> : null}
           {readMinutes ? (
             <>
@@ -169,7 +166,7 @@ export default async function InsightArticlePage({ params }: InsightPageProps) {
           <p className="m-0 max-w-[680px] text-[clamp(19px,1.7vw,23px)] leading-normal text-body">{post.excerpt}</p>
           <div className="flex items-center gap-3">
             <span aria-hidden="true" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-night">
-              <Mark className="h-5 w-[18px]" ours="#FFFFFF" yours="var(--accent-glow)" />
+              <Mark className="h-5 w-[18px]" ours="#FFFFFF" />
             </span>
             <span className="flex flex-col gap-0.5">
               <strong className="text-[15px] font-semibold">Levantate Labs</strong>

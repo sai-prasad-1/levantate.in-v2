@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Eyebrow, OutlineLink, SectionTitle, Serif } from "@/components/site/ui";
+import { Eyebrow, OutlineLink, SectionTitle, Serif, Status } from "@/components/site/ui";
 
 const stats = [
   { value: "100+", label: "Enterprises served" },
@@ -14,7 +14,7 @@ const kicker = "text-[12px] font-semibold tracking-[0.14em] uppercase";
 export function ClientWork() {
   return (
     <section id="work" className="wrap section-y">
-      <Eyebrow>Client work</Eyebrow>
+      <Eyebrow index="05">Client work</Eyebrow>
       <div className="mt-[22px] flex flex-wrap items-end justify-between gap-6">
         <SectionTitle>
           Built with <Serif>our clients.</Serif>
@@ -85,13 +85,7 @@ export function ClientWork() {
           />
         </div>
         <div className="flex min-w-0 flex-[1_1_340px] flex-col gap-3 p-[clamp(28px,3.4vw,40px)]">
-          <span className="inline-flex items-center gap-2 self-start rounded-full border border-hair px-3 py-1.5 font-mono text-[12px] tracking-[0.06em] text-body uppercase">
-            <span
-              aria-hidden="true"
-              className="inline-block h-[7px] w-[7px] rounded-full border-[1.5px] border-accent-ink"
-            />
-            In development
-          </span>
+          <Status kind="ring">In development</Status>
           <span className={`${kicker} text-dim`}>Crestline Creatives · Brand &amp; website</span>
           <h3 className="m-0 text-[clamp(22px,2.2vw,28px)] font-semibold tracking-[-0.025em]">
             A brand and website for a film-first creative studio

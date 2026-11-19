@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { ArrowLink, GradDot, OutlineLink } from "@/components/site/ui";
+import { ArrowLink, Eyebrow, OutlineLink, Status } from "@/components/site/ui";
 import { GradStops } from "./svg";
 
 const words = ["products", "platforms", "AI systems", "products"];
@@ -23,13 +23,10 @@ export function Hero() {
   return (
     <header id="top" className="wrap pt-[clamp(40px,6vw,80px)]">
       <div className="up d1 flex flex-wrap items-center justify-between gap-3">
-        <div className="inline-flex items-center gap-2.5 rounded-full border border-hair py-2 pr-4 pl-3 text-[12px] font-semibold tracking-[0.14em] uppercase">
-          <GradDot />
-          Product studio
-        </div>
-        <span className="inline-flex items-center gap-2 font-mono text-[12px] text-dim">
-          <GradDot size={7} pulse />2 project slots open this quarter
-        </span>
+        <Eyebrow>Product studio</Eyebrow>
+        <Status kind="live" className="text-dim!">
+          2 project slots open this quarter
+        </Status>
       </div>
 
       <h1 className="mt-[clamp(28px,3.4vw,48px)] mb-0 text-[clamp(40px,7.6vw,118px)] leading-[0.9] font-semibold tracking-[-0.055em] uppercase">

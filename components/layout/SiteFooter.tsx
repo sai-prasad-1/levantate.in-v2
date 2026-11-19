@@ -85,7 +85,9 @@ export function SiteFooter() {
 
         <div className="mt-9 flex flex-wrap justify-between gap-3 border-t border-night-line pt-5 text-[13px] text-on-night-dim">
           <span>{siteConfig.copyright}</span>
-          <span>Levántate: Spanish for “get up”.</span>
+          <a href={`mailto:${siteConfig.email}`} className="text-on-night-dim! hover:text-white!">
+            {siteConfig.email}
+          </a>
         </div>
       </div>
     </footer>

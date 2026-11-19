@@ -94,11 +94,6 @@ export const metadata: Metadata = {
   other: {
     "msapplication-TileColor": "#0A0A0A",
   },
-  icons: {
-    icon: [{ url: "/brand/logo-dark.svg", type: "image/svg+xml" }],
-    shortcut: ["/brand/logo-dark.svg"],
-    apple: [{ url: "/brand/logo-dark.svg" }],
-  },
   manifest: "/manifest.webmanifest",
 };
 

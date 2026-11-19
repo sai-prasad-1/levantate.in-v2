@@ -18,7 +18,7 @@ type MarkProps = {
 export function Mark({
   className,
   ours = "var(--night)",
-  yours = "var(--accent-ink)",
+  yours = ours === "gradient" ? "var(--night)" : ours,
   gradientId,
   title,
 }: MarkProps) {

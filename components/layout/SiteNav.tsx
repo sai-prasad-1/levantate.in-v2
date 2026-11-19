@@ -43,7 +43,7 @@ export function SiteNav() {
           <Mark className="h-7 w-[26px]" />
           <span className="flex flex-col leading-none">
             <span className="text-[16px] font-bold tracking-[-0.02em]">LEVANTATE</span>
-            <span className="mt-1 text-[9px] font-semibold tracking-[0.42em] text-accent-ink">LABS</span>
+            <span className="mt-1 text-[9px] font-semibold tracking-[0.42em]">LABS</span>
           </span>
         </Link>
 

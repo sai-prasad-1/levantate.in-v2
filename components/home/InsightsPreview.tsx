@@ -100,7 +100,7 @@ export async function InsightsPreview() {
 
   return (
     <section id="insights" className="wrap section-y">
-      <Eyebrow>Insights</Eyebrow>
+      <Eyebrow index="07">Insights</Eyebrow>
       <div className="mt-[22px] flex flex-wrap items-end justify-between gap-6">
         <SectionTitle>
           Notes from <Serif>the studio.</Serif>

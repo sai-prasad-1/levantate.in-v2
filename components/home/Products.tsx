@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLink, Eyebrow, GradDot, SectionTitle, Serif } from "@/components/site/ui";
-
-const statusChip =
-  "inline-flex items-center gap-2 self-start rounded-full border border-night-edge px-3 py-1.5 font-mono text-[12px] tracking-[0.06em] uppercase";
+import { ArrowLink, Eyebrow, SectionTitle, Serif, Status } from "@/components/site/ui";
 
 function Points({ items }: { items: string[] }) {
   return (
@@ -25,7 +22,7 @@ export function Products() {
   return (
     <section id="products" className="bg-night text-white">
       <div className="wrap section-y">
-        <Eyebrow onNight>Our products</Eyebrow>
+        <Eyebrow index="02" onNight>Our products</Eyebrow>
         <div className="mt-[22px] flex flex-wrap items-end justify-between gap-6">
           <SectionTitle>
             We ship <Serif onNight>our own bets.</Serif>
@@ -49,14 +46,9 @@ export function Products() {
             />
           </div>
           <div className={textBox}>
-            <span className={statusChip}>
-              <span
-                aria-hidden="true"
-                className="bg-grad inline-block h-[7px] w-[7px] rounded-full"
-                style={{ boxShadow: "0 0 10px var(--g1)" }}
-              />
+            <Status kind="live" onNight>
               Live
-            </span>
+            </Status>
             <h3 className="m-0 text-[clamp(30px,3vw,40px)] font-semibold tracking-[-0.035em]">Maestro</h3>
             <p className="m-0 text-[17px] leading-relaxed text-on-night">
               Interview prep that works like the real round. Human-graded courses for service-company interviews, and
@@ -78,10 +70,9 @@ export function Products() {
         {/* Cronpay */}
         <article className="mt-4 flex flex-wrap-reverse overflow-hidden rounded-[32px] border border-night-line bg-night-card">
           <div className={textBox}>
-            <span className={statusChip}>
-              <GradDot size={7} pulse />
+            <Status kind="live" onNight>
               Early access
-            </span>
+            </Status>
             <h3 className="m-0 text-[clamp(30px,3vw,40px)] font-semibold tracking-[-0.035em]">Cronpay</h3>
             <p className="m-0 text-[17px] leading-relaxed text-on-night">
               Permissionless crypto checkout. Customers pay with the token they already hold, on the chain they
@@ -124,10 +115,7 @@ export function Products() {
               />
             </div>
             <div className="flex flex-col gap-3.5 p-[clamp(26px,3vw,36px)]">
-              <span className={`${statusChip} text-on-night`}>
-                <GradDot size={7} />
-                Inside Maestro
-              </span>
+              <Status onNight>Inside Maestro</Status>
               <h3 className="m-0 text-[30px] font-semibold tracking-[-0.03em]">Maestro Simulation Lab</h3>
               <p className="m-0 text-[16px] leading-relaxed text-on-night">
                 A circuit simulator in the browser. Build from 167 parts, from resistors to an Arduino Uno, and watch
@@ -150,14 +138,9 @@ export function Products() {
               />
             </div>
             <div className="flex flex-col gap-3.5 p-[clamp(26px,3vw,36px)]">
-              <span className={`${statusChip} text-on-night`}>
-                <span
-                  aria-hidden="true"
-                  className="inline-block h-[7px] w-[7px] rounded-full border-[1.5px]"
-                  style={{ borderColor: "var(--g1)" }}
-                />
+              <Status kind="ring" onNight>
                 In development
-              </span>
+              </Status>
               <h3 className="m-0 text-[30px] font-semibold tracking-[-0.03em]">Elevox</h3>
               <p className="m-0 text-[16px] leading-relaxed text-on-night">
                 An AI phone agent that answers every call in your customer&rsquo;s language, books appointments,
@@ -191,13 +174,9 @@ export function Products() {
               <span className="relative font-mono text-[13px] tracking-[0.3em] text-on-night-dim">█████ ███</span>
             </div>
             <div className="flex flex-col gap-3.5 p-[clamp(26px,3vw,36px)]">
-              <span className={`${statusChip} text-on-night`}>
-                <span
-                  aria-hidden="true"
-                  className="inline-block h-[7px] w-[7px] rounded-full border-[1.5px] border-dashed border-on-night-dim"
-                />
+              <Status kind="dashed" onNight>
                 Stealth
-              </span>
+              </Status>
               <h3 className="m-0 text-[30px] font-semibold tracking-[-0.03em]">Name withheld</h3>
               <p className="m-0 text-[16px] leading-relaxed text-on-night">
                 Systems intelligence. Something we&rsquo;re not ready to show yet. Ask us about it on a call.

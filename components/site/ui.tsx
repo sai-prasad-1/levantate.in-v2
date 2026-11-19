@@ -48,25 +48,77 @@ export function Serif({ children, onNight = false }: { children: ReactNode; onNi
   );
 }
 
-/** Section eyebrow: pill with a gradient dot. */
+/**
+ * Section label: an optional section number, a short rule, then the label in
+ * plain sentence case. Editorial, not a badge.
+ */
 export function Eyebrow({
   children,
+  index,
   onNight = false,
   className = "",
 }: {
   children: ReactNode;
+  index?: string;
   onNight?: boolean;
   className?: string;
 }) {
   return (
     <div
-      className={`inline-flex items-center gap-2.5 rounded-full border py-2 pr-4 pl-3 text-[12px] font-semibold tracking-[0.14em] uppercase ${
-        onNight ? "border-night-edge text-white" : "border-hair text-night"
+      className={`inline-flex items-center gap-3 text-[14px] leading-none font-medium tracking-[-0.005em] ${
+        onNight ? "text-on-night" : "text-body"
       } ${className}`}
     >
-      <GradDot />
-      {children}
+      {index ? (
+        <span className={`font-mono text-[12px] tabular-nums ${onNight ? "text-on-night-dim" : "text-dim"}`}>{index}</span>
+      ) : null}
+      <span aria-hidden="true" className="block h-px w-7 bg-current opacity-40" />
+      <span>{children}</span>
     </div>
+  );
+}
+
+/** Status line for products and projects: a small marker and plain text. */
+export type StatusKind = "live" | "solid" | "ring" | "dashed";
+
+export function StatusMark({ kind = "solid" }: { kind?: StatusKind }) {
+  if (kind === "ring") {
+    return <span aria-hidden="true" className="box-border h-[7px] w-[7px] shrink-0 rounded-full border-[1.5px] border-current opacity-70" />;
+  }
+  if (kind === "dashed") {
+    return (
+      <span aria-hidden="true" className="box-border h-[7px] w-[7px] shrink-0 rounded-full border-[1.5px] border-dashed border-current opacity-60" />
+    );
+  }
+  return (
+    <span
+      aria-hidden="true"
+      className={`h-[7px] w-[7px] shrink-0 rounded-full ${kind === "live" ? "pulse" : ""}`}
+      style={{ background: "var(--g1)" }}
+    />
+  );
+}
+
+export function Status({
+  children,
+  kind = "solid",
+  onNight = false,
+  className = "",
+}: {
+  children: ReactNode;
+  kind?: StatusKind;
+  onNight?: boolean;
+  className?: string;
+}) {
+  return (
+    <span
+      className={`inline-flex items-center gap-2 self-start text-[13px] leading-none font-medium tracking-[-0.005em] ${
+        onNight ? "text-on-night" : "text-body"
+      } ${className}`}
+    >
+      <StatusMark kind={kind} />
+      {children}
+    </span>
   );
 }
 
@@ -156,7 +208,7 @@ export function CtaBand({
     <section className="wrap pb-[clamp(96px,11vw,140px)]">
       <div className="flex flex-wrap items-end justify-between gap-8 rounded-[32px] bg-paper p-[clamp(28px,5vw,64px)]">
         <div className="max-w-[640px]">
-          <Eyebrow className="bg-white">Start a project</Eyebrow>
+          <Eyebrow>Start a project</Eyebrow>
           <h2 className="mt-5 mb-0 text-[clamp(34px,4.8vw,64px)] leading-[0.96] font-semibold tracking-[-0.05em] uppercase">
             {title}
           </h2>

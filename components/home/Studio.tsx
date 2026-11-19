@@ -19,7 +19,7 @@ function Chips({ items }: { items: string[] }) {
 export function Studio() {
   return (
     <section id="studio" className="wrap section-y">
-      <Eyebrow>The studio</Eyebrow>
+      <Eyebrow index="01">The studio</Eyebrow>
       <SectionTitle className="mt-[22px]">
         Two kinds of work, <Serif>one standard.</Serif>
       </SectionTitle>
