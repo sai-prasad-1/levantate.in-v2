@@ -5,6 +5,7 @@ import {
   getAllInsights as getStaticInsights,
   getInsightBySlug as getStaticBySlug,
 } from "@/lib/data/insights";
+import { articleFor } from "@/lib/data/insight-articles";
 import type { Insight } from "@/lib/db/schema";
 
 export type PublicInsight = {
@@ -49,7 +50,7 @@ function staticAsPublic(): PublicInsight[] {
     slug: post.slug,
     title: post.title,
     excerpt: post.excerpt,
-    content: `<p>${post.excerpt}</p>`,
+    content: articleFor(post.slug, post.excerpt),
     coverImageUrl: null,
     tag: post.tag,
     featured: index === 0 || post.slug === featuredPost.slug,
@@ -79,7 +80,7 @@ async function fetchPublishedInsights() {
 }
 
 export function getPublishedInsights() {
-  return unstable_cache(fetchPublishedInsights, ["insights-published"], {
+  return unstable_cache(fetchPublishedInsights, ["insights-published", "v2"], {
     tags: ["insights"],
     revalidate: 3600,
   })();
@@ -98,7 +99,7 @@ function staticBySlug(slug: string): PublicInsight | null {
     slug: post.slug,
     title: post.title,
     excerpt: post.excerpt,
-    content: `<p>${post.excerpt}</p>`,
+    content: articleFor(post.slug, post.excerpt),
     coverImageUrl: null,
     tag: post.tag,
     featured: post.slug === featuredPost.slug,
@@ -131,7 +132,7 @@ export async function getInsightBySlug(slug: string) {
         return staticBySlug(slug);
       }
     },
-    [`insight-${slug}`],
+    [`insight-${slug}`, "v2"],
     { tags: ["insights", `insight:${slug}`], revalidate: 3600 },
   )();
 }

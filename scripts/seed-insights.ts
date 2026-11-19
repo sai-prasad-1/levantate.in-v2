@@ -4,6 +4,7 @@ config({ path: ".env" });
 
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
+import { articleFor } from "../lib/data/insight-articles";
 import { featuredPost, insightPosts } from "../lib/data/insights";
 import { insights } from "../lib/db/schema";
 
@@ -19,7 +20,7 @@ async function seed() {
     slug: post.slug,
     title: post.title,
     excerpt: post.excerpt,
-    content: `<p>${post.excerpt}</p>`,
+    content: articleFor(post.slug, post.excerpt),
     tag: post.tag,
     status: "published" as const,
     featured: index === 0,

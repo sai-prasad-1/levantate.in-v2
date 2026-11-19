@@ -9,8 +9,10 @@ config({ path: ".env.local", quiet: true });
 config({ path: ".env", quiet: true });
 
 import { neon } from "@neondatabase/serverless";
+import { and, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/neon-http";
 import { migrate } from "drizzle-orm/neon-http/migrator";
+import { articleFor } from "../lib/data/insight-articles";
 import { featuredPost, insightPosts } from "../lib/data/insights";
 import { insights } from "../lib/db/schema";
 
@@ -46,7 +48,7 @@ async function main() {
       slug: post.slug,
       title: post.title,
       excerpt: post.excerpt,
-      content: `<p>${post.excerpt}</p>`,
+      content: articleFor(post.slug, post.excerpt),
       tag: post.tag,
       status: "published" as const,
       featured: index === 0,
@@ -55,7 +57,24 @@ async function main() {
     }));
     await db.insert(insights).values(posts).onConflictDoNothing({ target: insights.slug });
     console.log(`[db] Seeded ${posts.length} insights.`);
+    return;
   }
+
+  // Built-in posts first seeded with only their excerpt get the full article.
+  // A post edited in the admin no longer matches the placeholder and is left alone.
+  let filled = 0;
+  for (const post of [featuredPost, ...insightPosts]) {
+    const article = articleFor(post.slug, post.excerpt);
+    const placeholder = `<p>${post.excerpt}</p>`;
+    if (article === placeholder) continue;
+    const updated = await db
+      .update(insights)
+      .set({ content: article, updatedAt: new Date() })
+      .where(and(eq(insights.slug, post.slug), eq(insights.content, placeholder)))
+      .returning({ id: insights.id });
+    filled += updated.length;
+  }
+  if (filled) console.log(`[db] Added full articles to ${filled} insights.`);
 }
 
 main().catch((error) => {

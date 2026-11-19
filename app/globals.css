@@ -634,6 +634,16 @@ select:focus {
 .article-body ol {
   padding-left: 1.3em;
 }
+.article-body ul {
+  list-style: disc;
+}
+.article-body ol {
+  list-style: decimal;
+}
+.article-body li::marker {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
 .article-body li + li {
   margin-top: 0.4em;
 }
