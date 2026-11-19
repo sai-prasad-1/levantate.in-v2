@@ -4,7 +4,8 @@ import { StatusPill } from "@/components/products/StatusPill";
 import { ArrowLink, Eyebrow, GradDot, OutlineLink, Serif } from "@/components/site/ui";
 import { ExploitlessCover, InterviewCover } from "@/components/work/CaseCovers";
 import { caseStudies, clientQuotes, type CaseStudy } from "@/lib/data/work";
-import { createPageMetadata } from "@/lib/seo";
+import { JsonLdScript } from "@/components/seo/JsonLd";
+import { createPageMetadata, breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Client work",
@@ -52,6 +53,7 @@ function CaseCoverFor({ study }: { study: CaseStudy }) {
 export default function WorkPage() {
   return (
     <>
+      <JsonLdScript data={[webPageJsonLd({ type: "CollectionPage", name: "Client work", description: "Products, platforms and sites Levantate Labs has built with clients.", path: "/work" }), breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Client work", path: "/work" }])]} />
       {/* ============ HERO ============ */}
       <header className="wrap pt-[clamp(56px,8vw,112px)]">
         <Eyebrow className="up d1">Client work</Eyebrow>

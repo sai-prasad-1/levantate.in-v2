@@ -3,7 +3,8 @@ import { ProcessTimeline } from "@/components/services/ProcessTimeline";
 import { ServiceVisual } from "@/components/services/ServiceVisual";
 import { ArrowLink, CtaBand, Eyebrow, GradDot, Serif } from "@/components/site/ui";
 import { services } from "@/lib/data/services";
-import { createPageMetadata } from "@/lib/seo";
+import { JsonLdScript } from "@/components/seo/JsonLd";
+import { createPageMetadata, servicesJsonLd, breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Services",
@@ -30,6 +31,7 @@ const proof = [
 export default function ServicesPage() {
   return (
     <>
+      <JsonLdScript data={[webPageJsonLd({ name: "Services", description: "Product strategy and design, web and product engineering, AI and machine learning, AI for SaaS, enterprise software and blockchain, built end to end by one team.", path: "/services" }), breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }]), servicesJsonLd()]} />
       {/* ============ HERO ============ */}
       <header className="wrap pt-[clamp(56px,8vw,112px)]">
         <Eyebrow className="up d1">Services</Eyebrow>

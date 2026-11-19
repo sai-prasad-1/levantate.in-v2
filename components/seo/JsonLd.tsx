@@ -1,27 +1,22 @@
-import {
-  organizationJsonLd,
-  professionalServiceJsonLd,
-  websiteJsonLd,
-} from "@/lib/seo";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
-export function JsonLd() {
-  const payloads = [
-    organizationJsonLd(),
-    websiteJsonLd(),
-    professionalServiceJsonLd(),
-  ];
-
+/** Renders one or more schema.org objects as JSON-LD script tags. */
+export function JsonLdScript({ data }: { data: object | object[] }) {
+  const items = Array.isArray(data) ? data : [data];
   return (
     <>
-      {payloads.map((data, index) => (
+      {items.map((item, index) => (
         <script
-          key={`jsonld-${index}`}
+          key={index}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(data).replace(/</g, "\\u003c"),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(item).replace(/</g, "\\u003c") }}
         />
       ))}
     </>
   );
+}
+
+/** Site-wide entities: the organisation and the website. */
+export function JsonLd() {
+  return <JsonLdScript data={[organizationJsonLd(), websiteJsonLd()]} />;
 }

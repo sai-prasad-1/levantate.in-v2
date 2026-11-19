@@ -6,7 +6,8 @@ import { InsightFilter } from "@/components/insights/InsightFilter";
 import { ArrowIcon, CtaBand, Eyebrow, Serif } from "@/components/site/ui";
 import { getFeaturedInsight, getPublishedInsights } from "@/lib/data/insights-db";
 import { siteConfig } from "@/lib/data/site";
-import { createPageMetadata } from "@/lib/seo";
+import { JsonLdScript } from "@/components/seo/JsonLd";
+import { createPageMetadata, blogJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Insights",
@@ -52,6 +53,7 @@ export default async function InsightsPage() {
 
   return (
     <>
+      <JsonLdScript data={[breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Insights", path: "/insights" }]), blogJsonLd(posts)]} />
       {/* Hero */}
       <header className="wrap pt-[clamp(56px,8vw,104px)]">
         <Eyebrow className="up d1">Insights</Eyebrow>

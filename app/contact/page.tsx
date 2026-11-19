@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { ContactClient } from "./ContactClient";
 import { ContactFaq, ContactNextSteps } from "@/components/contact/ContactSections";
 import { getCalendlyUrl } from "@/lib/data/settings";
-import { createPageMetadata } from "@/lib/seo";
+import { faqs } from "@/lib/data/faqs";
+import { JsonLdScript } from "@/components/seo/JsonLd";
+import { createPageMetadata, faqJsonLd, breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Contact",
@@ -15,6 +17,7 @@ export default async function ContactPage() {
   const calendlyUrl = await getCalendlyUrl();
   return (
     <>
+      <JsonLdScript data={[webPageJsonLd({ type: "ContactPage", name: "Contact Levantate Labs", description: "Tell us what you are building. We reply within two working days.", path: "/contact" }), breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]), faqJsonLd(faqs)]} />
       <ContactClient calendlyUrl={calendlyUrl} />
       <ContactNextSteps />
       <ContactFaq />

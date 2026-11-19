@@ -116,6 +116,8 @@ export default async function InsightArticlePage({ params }: InsightPageProps) {
       path: `/insights/${post.slug}`,
       publishedAt: post.publishedAt ?? new Date().toISOString(),
       tags: [post.tag],
+      image: post.coverImageUrl,
+      wordCount: toPlainText(post.content).split(" ").filter(Boolean).length,
     }),
   ];
 

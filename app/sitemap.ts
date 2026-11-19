@@ -1,21 +1,9 @@
 import type { MetadataRoute } from "next";
-import {
-  getInsightSitemapEntries,
-  getPageSitemapEntries,
-} from "@/lib/seo";
+import { getInsightSitemapEntries, getPageSitemapEntries } from "@/lib/seo";
 
-export async function generateSitemaps() {
-  return [{ id: "pages" }, { id: "insights" }];
-}
+export const revalidate = 3600;
 
-export default async function sitemap(props: {
-  id: Promise<string>;
-}): Promise<MetadataRoute.Sitemap> {
-  const id = await props.id;
-
-  if (id === "insights") {
-    return getInsightSitemapEntries();
-  }
-
-  return getPageSitemapEntries();
+/** One sitemap at /sitemap.xml: the main pages, then every published insight. */
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  return [...getPageSitemapEntries(), ...(await getInsightSitemapEntries())];
 }

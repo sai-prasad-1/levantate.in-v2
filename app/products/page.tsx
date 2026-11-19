@@ -4,7 +4,8 @@ import Link from "next/link";
 import { BrowserFrame } from "@/components/products/BrowserFrame";
 import { StatusPill, type StatusDot } from "@/components/products/StatusPill";
 import { ArrowLink, CtaBand, Eyebrow, Serif } from "@/components/site/ui";
-import { createPageMetadata } from "@/lib/seo";
+import { JsonLdScript } from "@/components/seo/JsonLd";
+import { createPageMetadata, productsJsonLd, breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Products",
@@ -116,6 +117,7 @@ function StepBar({ color }: { color: string }) {
 export default function ProductsPage() {
   return (
     <>
+      <JsonLdScript data={[webPageJsonLd({ type: "CollectionPage", name: "Products", description: "Products built and run by Levantate Labs: Maestro and its Simulation Lab, Cronpay, and Elevox in development.", path: "/products" }), breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Products", path: "/products" }]), productsJsonLd()]} />
       {/* ============ HERO ============ */}
       <header className="wrap pt-[clamp(56px,8vw,112px)]">
         <Eyebrow className="up d1">Our products</Eyebrow>
