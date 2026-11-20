@@ -37,7 +37,7 @@ export const insightPosts = [
     tag: "Engineering",
     date: "Mar 2026",
     publishedAt: "2026-03-21",
-    title: "Lessons from scaling one platform to 100+ enterprise tenants",
+    title: "Lessons from scaling one platform to 25+ enterprise tenants",
     excerpt: "Multi-tenancy decisions we got right, and two we had to unwind.",
   },
   {

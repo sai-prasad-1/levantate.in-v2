@@ -145,7 +145,7 @@ function Enterprise() {
       </div>
       <div className="flex justify-between gap-3 font-mono text-[12px] text-on-night-dim">
         <span>tenants</span>
-        <span className="text-white">100+ enterprises</span>
+        <span className="text-white">25+ enterprises</span>
       </div>
     </div>
   );

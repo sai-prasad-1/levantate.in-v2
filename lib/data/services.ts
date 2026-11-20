@@ -76,7 +76,7 @@ export const services: readonly Service[] = [
     title: "Enterprise",
     accent: "software.",
     short: "Enterprise software",
-    body: "Systems that survive procurement, compliance reviews and hundred-tenant scale. We’ve done it: our builds serve 100+ enterprises today.",
+    body: "Systems that survive procurement, compliance reviews and multi-tenant scale. We’ve done it: our builds serve 25+ enterprises today.",
     items: [
       "Multi-tenant SaaS platforms",
       "Admin & internal tooling",

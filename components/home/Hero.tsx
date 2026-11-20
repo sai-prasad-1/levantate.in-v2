@@ -118,7 +118,7 @@ export function Hero() {
 
       <div className="up d6 mt-[clamp(32px,4vw,48px)] flex flex-wrap gap-x-8 gap-y-2.5 border-t border-hair pt-5 text-[14px] text-dim">
         <span>
-          <strong className="font-semibold text-night">100+</strong> enterprises served
+          <strong className="font-semibold text-night">25+</strong> enterprises served
         </span>
         <span>
           <strong className="font-semibold text-night">5</strong> products of our own

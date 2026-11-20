@@ -23,7 +23,7 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const stats = [
-  { value: "100+", label: "Enterprises served" },
+  { value: "25+", label: "Enterprises served" },
   { value: "12+", label: "Systems shipped" },
   { value: "2", label: "Slots open this quarter", live: true },
 ];

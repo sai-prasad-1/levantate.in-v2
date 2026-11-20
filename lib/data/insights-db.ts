@@ -80,7 +80,7 @@ async function fetchPublishedInsights() {
 }
 
 export function getPublishedInsights() {
-  return unstable_cache(fetchPublishedInsights, ["insights-published", "v2"], {
+  return unstable_cache(fetchPublishedInsights, ["insights-published", "v3"], {
     tags: ["insights"],
     revalidate: 3600,
   })();
@@ -132,7 +132,7 @@ export async function getInsightBySlug(slug: string) {
         return staticBySlug(slug);
       }
     },
-    [`insight-${slug}`, "v2"],
+    [`insight-${slug}`, "v3"],
     { tags: ["insights", `insight:${slug}`], revalidate: 3600 },
   )();
 }

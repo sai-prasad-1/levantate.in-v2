@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Eyebrow, OutlineLink, SectionTitle, Serif, Status } from "@/components/site/ui";
 
 const stats = [
-  { value: "100+", label: "Enterprises served" },
+  { value: "25+", label: "Enterprises served" },
   { value: "12+", label: "Systems shipped" },
   { value: "5", label: "Products of our own" },
   { value: "2", label: "Slots open this quarter" },

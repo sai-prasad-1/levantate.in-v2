@@ -75,6 +75,25 @@ async function main() {
     filled += updated.length;
   }
   if (filled) console.log(`[db] Added full articles to ${filled} insights.`);
+
+  // Titles corrected after launch. Only rows still holding the old title change,
+  // so a title rewritten in the admin is left alone. The slug stays the same.
+  const renamed = [
+    {
+      slug: "lessons-from-scaling-to-100-enterprise-tenants",
+      from: "Lessons from scaling one platform to 100+ enterprise tenants",
+    },
+  ];
+  for (const { slug, from } of renamed) {
+    const title = [featuredPost, ...insightPosts].find((p) => p.slug === slug)?.title;
+    if (!title || title === from) continue;
+    const updated = await db
+      .update(insights)
+      .set({ title, updatedAt: new Date() })
+      .where(and(eq(insights.slug, slug), eq(insights.title, from)))
+      .returning({ id: insights.id });
+    if (updated.length) console.log(`[db] Renamed insight: ${title}`);
+  }
 }
 
 main().catch((error) => {
